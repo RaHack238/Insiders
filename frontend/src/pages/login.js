@@ -3,6 +3,7 @@ import { Form, Input, Button } from 'antd';
 import Grid from '@material-ui/core/Grid';
 import '../styles/login.css';
 import IITGoaLogo from '../images/iit_goa_logo.svg';
+import zIndex from '@material-ui/core/styles/zIndex';
 
 function LoginPage() {
     const [username, setUsername] = useState('');
@@ -16,11 +17,19 @@ function LoginPage() {
     
     return (
 
-    <div className="login-page" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+    <div className="login-page" 
+        style={{
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems: 'center',
+            backgroundColor: '#e5e5e5',
+            height: '100vh',
+            width: '100vw'
+        }}>
         <div 
             className='login-card'
             style={{
-                marginTop: '7rem',
+                marginTop: '4rem',
                 borderStyle: 'solid',
                 borderWidth: '1px',
                 borderRadius: '10px',
@@ -39,16 +48,23 @@ function LoginPage() {
         style={{ height: '100%' }}
         >
 
-        <Grid item xs={6}>
-            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                <img src={IITGoaLogo} alt="IIT Goa Logo" width='60%' height='60%' />
-            </div>
+        <Grid item xs={6} 
+            style={{
+                height: '100%',
+                width: '100%',
+                backgroundColor: 'white',
+                display: 'flex', 
+                justifyContent: 'center', 
+                alignItems: 'center',
+                borderRadius: '10px 0px 0px 10px'
+            }}>
+            <img src={IITGoaLogo} alt="IIT Goa Logo" width='60%' height='60%' />
         </Grid>  
 
         <Grid item xs={6}
             style={{
                 
-                background: 'linear-gradient(to bottom, #BDFFF3, #4AC29A)',
+                backgroundColor: '#a5bfd7',
                 height: '100%',
                 width: '100%',
                 display: 'flex', 
