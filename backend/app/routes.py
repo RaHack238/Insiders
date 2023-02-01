@@ -20,6 +20,9 @@ def jwt_required(f):
 
 
 @app.route('/')
+def home():
+    return "Welcome To IIT Goa Ams Poral"
+
 @app.route('/index')
 @jwt_required
 def index():
