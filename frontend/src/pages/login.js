@@ -2,14 +2,16 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Form, Input, Button } from "antd";
 import Grid from "@material-ui/core/Grid";
+import { useNavigate } from "react-router-dom";
 import "../styles/login.css";
 import IITGoaLogo from "../images/iit_goa_logo.svg";
-import zIndex from "@material-ui/core/styles/zIndex";
 
 function LoginPage() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
 
   //integration with backend
 
@@ -27,7 +29,7 @@ function LoginPage() {
       //if the token is recieved then redirect to the dashboard page.
       if(response.status === 200){
         localStorage.setItem('Authorization', response.data.access_token);
-        // window.location.href = "/dashboard";
+        navigate("/viewgrades");
       }else{
         setError("Invalid Credentials");
       }
@@ -36,53 +38,53 @@ function LoginPage() {
     
   }
 
-  return (
-    <div
-      className="login-page"
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#e5e5e5",
-        height: "100vh",
-        width: "100vw",
-      }}
-    >
-      <div
-        className="login-card"
+    return (
+        <div
+        className="login-page"
         style={{
-          marginTop: "4rem",
-          borderStyle: "solid",
-          borderWidth: "1px",
-          borderRadius: "10px",
-          borderColor: "#C8C8C8",
-          height: "70vh",
-          width: "70vw",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "#e5e5e5",
+            height: "100vh",
+            width: "100vw",
         }}
-      >
-        <Grid
-          container
-          // spacing={2}
-          direction="row"
-          alignItems="center"
-          justifyContent="center"
-          style={{ height: "100%" }}
         >
-          <Grid
-            item
-            xs={6}
+        <div
+            className="login-card"
             style={{
-              height: "100%",
-              width: "100%",
-              backgroundColor: "white",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              borderRadius: "10px 0px 0px 10px",
+            marginTop: "4rem",
+            borderStyle: "solid",
+            borderWidth: "1px",
+            borderRadius: "10px",
+            borderColor: "#C8C8C8",
+            height: "70vh",
+            width: "70vw",
             }}
-          >
-            <img src={IITGoaLogo} alt="IIT Goa Logo" width="60%" height="60%" />
-          </Grid>
+        >
+            <Grid
+            container
+            // spacing={2}
+            direction="row"
+            alignItems="center"
+            justifyContent="center"
+            style={{ height: "100%" }}
+            >
+            <Grid
+                item
+                xs={6}
+                style={{
+                height: "100%",
+                width: "100%",
+                backgroundColor: "white",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                borderRadius: "10px 0px 0px 10px",
+                }}
+            >
+                <img src={IITGoaLogo} alt="IIT Goa Logo" width="60%" height="60%" />
+            </Grid>
 
           <Grid
             item
@@ -135,7 +137,6 @@ function LoginPage() {
                       height: "100%",
                       fontFamily: "Poppins",
                     }}
-                    onClick={e => handleSubmit(e)}
                   >
                     Login
                   </Button>
