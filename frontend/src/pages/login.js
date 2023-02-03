@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { Form, Input, Button } from "antd";
 import Grid from "@material-ui/core/Grid";
 import "../styles/login.css";
@@ -11,29 +12,28 @@ function LoginPage() {
   const [error, setError] = useState("");
 
   //integration with backend
-  function handleSubmit(e) {
+
+  const handleSubmit = e => {
     e.preventDefault();
-    console.log("Handle submit called");
+
     //Sending username & password in json format to  http://127.0.0.1:5000 and recieve a jwt token.
-    fetch("http://127.0.0.1:5000/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: username,
-        password: password,
-      }),
-    }).then((response) => {
-      console.log(response);
-      if (response.status === 200) {
-        //redirect to home page and set jwt token in local storage
-        localStorage.setItem("Authorization", response.access_token);
-        window.location.href = "/";
-      } else {
-        setError("Incorrect username or password");
+    const payload = {
+      username: username,
+      password: password
+    }
+    
+    axios.post('http://127.0.0.1:5000/login', payload)
+    .then(function (response) {
+      //if the token is recieved then redirect to the dashboard page.
+      if(response.status === 200){
+        localStorage.setItem('Authorization', response.data.access_token);
+        // window.location.href = "/dashboard";
+      }else{
+        setError("Invalid Credentials");
       }
-    });
+    })
+
+    
   }
 
   return (
@@ -135,6 +135,7 @@ function LoginPage() {
                       height: "100%",
                       fontFamily: "Poppins",
                     }}
+                    onClick={e => handleSubmit(e)}
                   >
                     Login
                   </Button>
