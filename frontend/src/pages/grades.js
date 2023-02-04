@@ -67,7 +67,7 @@ function GradesPage(){
                 width: '100%'
               }}>
                 <div style={{
-                  marginTop: '1rem'
+                  marginTop: '0.4rem'
                 }}>
                   <Avatar style={{
                     width: 130,

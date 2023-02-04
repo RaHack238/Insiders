@@ -23,12 +23,14 @@ function LoginPage() {
       username: username,
       password: password
     }
-    
+    console.log(payload);
     axios.post('http://127.0.0.1:5000/login', payload)
     .then(function (response) {
       //if the token is recieved then redirect to the dashboard page.
       if(response.status === 200){
         localStorage.setItem('Authorization', response.data.access_token);
+        const tkn=localStorage.getItem('Authorization');
+        console.log(tkn);
         navigate("/viewgrades");
       }else{
         setError("Invalid Credentials");
@@ -137,6 +139,7 @@ function LoginPage() {
                       height: "100%",
                       fontFamily: "Poppins",
                     }}
+                    onClick={handleSubmit}
                   >
                     Login
                   </Button>
