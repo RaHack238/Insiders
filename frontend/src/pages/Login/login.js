@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
 import Grid from "@material-ui/core/Grid";
 import { useNavigate } from "react-router-dom";
-import "../styles/login.css";
+import './login.css';
 import IITGoaLogo from "../images/iit_goa_logo.svg";
 
 function LoginPage() {
@@ -11,12 +11,10 @@ function LoginPage() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const navigate = useNavigate();
-
-    //integration with backend
+    
     function handleSubmit(e) {
         e.preventDefault();
         console.log("Handle submit called");
-        
 
         //Sending username & password in json format to  http://127.0.0.1:5000 and recieve a jwt token.
         fetch("http://127.0.0.1:5000/login", {
@@ -42,27 +40,10 @@ function LoginPage() {
 
     return (
         <div
-        className="login-page"
-        style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "#e5e5e5",
-            height: "100vh",
-            width: "100vw",
-        }}
+            className="login-page"
         >
         <div
             className="login-card"
-            style={{
-            marginTop: "4rem",
-            borderStyle: "solid",
-            borderWidth: "1px",
-            borderRadius: "10px",
-            borderColor: "#C8C8C8",
-            height: "70vh",
-            width: "70vw",
-            }}
         >
             <Grid
             container
@@ -76,13 +57,13 @@ function LoginPage() {
                 item
                 xs={6}
                 style={{
-                height: "100%",
-                width: "100%",
-                backgroundColor: "white",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                borderRadius: "10px 0px 0px 10px",
+                    height: "100%",
+                    width: "100%",
+                    backgroundColor: "white",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    borderRadius: "10px 0px 0px 10px",
                 }}
             >
                 <img src={IITGoaLogo} alt="IIT Goa Logo" width="60%" height="60%" />
@@ -92,21 +73,21 @@ function LoginPage() {
                 item
                 xs={6}
                 style={{
-                backgroundColor: "#a5bfd7",
-                height: "100%",
-                width: "100%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                borderRadius: "0px 10px 10px 0px",
+                    backgroundColor: "#a5bfd7",
+                    height: "100%",
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    borderRadius: "0px 10px 10px 0px",
                 }}
             >
                 <div style={{}}>
                 <h2
                     className="text-center"
                     style={{
-                    fontFamily: "Poppins",
-                    color: "#00264d",
+                        fontFamily: "Poppins",
+                        color: "#00264d",
                     }}
                 >
                     Login
@@ -133,11 +114,11 @@ function LoginPage() {
                         type="primary"
                         htmlType="submit"
                         style={{
-                        backgroundColor: "#00264d",
-                        borderRadius: "15px",
-                        width: "60%",
-                        height: "100%",
-                        fontFamily: "Poppins",
+                            backgroundColor: "#00264d",
+                            borderRadius: "15px",
+                            width: "60%",
+                            height: "100%",
+                            fontFamily: "Poppins",
                         }}
                         onClick={handleSubmit}
                     >

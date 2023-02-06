@@ -1,17 +1,14 @@
-import React from "react";
+import React from 'react';
 import { 
-  Avatar, 
   Table, 
   TableBody,
   TableCell, 
   TableContainer,
   TableHead,
-  TableRow,
-  Typography } from "@material-ui/core";
+  TableRow, } from "@material-ui/core";
 
-
-function GradesPage(){
-
+const GradesTable = () => {
+  
   const rows = [
     {
       'course' : 'Course Code 1',
@@ -31,95 +28,8 @@ function GradesPage(){
     }
   ];
 
-  return(
-    <div
-      className="login-page"
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#e5e5e5",
-        height: "100vh",
-        width: "100vw",
-      }}
-    >
-      <div
-        className="main-profile-table"
-        style={{
-          backgroundColor: "white",
-          height: '80%',
-          width: '90%',
-          borderRadius: '10px'
-        }}>
-
-          <div 
-            className="student-details"
-            style={{
-              backgroundColor: "#a5bfd7",
-              height: '25%',
-              marginTop: '1rem',
-              marginBottom: '2rem',
-            }}>
-              <div style={{
-                marginLeft: '1rem',
-                display: 'flex',
-                height: '100%',
-                width: '100%'
-              }}>
-                <div style={{
-                  marginTop: '1rem'
-                }}>
-                  <Avatar style={{
-                    width: 130,
-                    height: 130
-                  }}>
-                    SN
-                  </Avatar>
-                </div>
-                <div style={{
-                  marginLeft: '2.5rem',
-                  marginTop: '1rem',
-                  width: '100% !important'
-                }}>
-                  <Typography style={{
-                    fontFamily: "Poppins",
-                    color: "#00264d",
-                    fontSize: 30
-                  }}>
-                    Student Name
-                  </Typography>
-                  <Typography style={{
-                    fontFamily: "Poppins",
-                    color: "#00264d",
-                    fontSize: 16,
-                  }}>
-                    Roll Number: 
-                  </Typography>
-                  <Typography style={{
-                    fontFamily: "Poppins",
-                    color: "#00264d",
-                    fontSize: 16,
-                  }}>
-                    Branch Name: 
-                  </Typography>
-                  <Typography style={{
-                    fontFamily: "Poppins",
-                    color: "#00264d",
-                    fontSize: 16,
-                  }}>
-                    Student Type:
-                  </Typography>
-
-                  
-                </div>
-              </div>
-              
-          
-
-          </div>
-
-          <div className="grades-table">
-          <TableContainer>
+    return (
+      <TableContainer>
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                   <TableRow style={{
@@ -190,11 +100,7 @@ function GradesPage(){
                 </TableBody>
               </Table>
             </TableContainer>
-          </div>
-
-      </div>
-    </div>
-  )
-}
-
-export default GradesPage;
+    );
+  };
+  
+  export default GradesTable;
