@@ -5,12 +5,15 @@ import {
 
 import GradesTable from "../../components/gradesTable";
 import './grades.css';
+import Navbar from "../../components/navbar";
 
 
 function GradesPage(){
   
 
   return(
+    <div>
+    <Navbar />
     <div
       className="grades-page"
     >
@@ -79,6 +82,7 @@ function GradesPage(){
           </div>
 
       </div>
+    </div>
     </div>
   )
 }

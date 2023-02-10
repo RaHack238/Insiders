@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
 import Grid from "@material-ui/core/Grid";
 import { useNavigate } from "react-router-dom";
-import './login.css';
-import IITGoaLogo from "../images/iit_goa_logo.svg";
+import './styles.css';
+import IITGoaLogo from "../../images/iit_goa_logo.svg";
 
 function LoginPage() {
 
@@ -110,6 +110,7 @@ function LoginPage() {
                     </Form.Item>
                     {error && <div className="error" style={{marginBottom: '1rem'}}>{error}</div>}
                     <Form.Item>
+                    <div className="text-center">    
                     <Button
                         type="primary"
                         htmlType="submit"
@@ -124,6 +125,7 @@ function LoginPage() {
                     >
                         Login
                     </Button>
+                    </div>
                     </Form.Item>
                 </Form>
                 </div>
