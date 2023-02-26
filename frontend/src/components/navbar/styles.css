@@ -1,7 +1,6 @@
 .navbar {
     display: flex;
     align-items: center;
-    
     background: #a5bfd7;
     color: #00264d;
     font-family: Helvetica;
@@ -11,11 +10,14 @@
 .navbar__title {
     margin-right: auto;
     font-size: 150%;
-    padding: 12px 16px;
+    padding: 10px 10px;
+    margin-left: 5%;
 }
 
 .navbar__item {
-    padding: 16px 16px;
+    padding: 10px 10px;
     cursor: pointer;
     vertical-align: middle;
+    margin-inline: inherit;
+    color: #00264d;
 }
