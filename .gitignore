@@ -1,0 +1,22 @@
+# Node.js dependencies
+**/node_modules/
+
+# Flask dependencies
+venv/
+*.pyc
+**/__pycache__/
+
+# Build artifacts
+build/
+dist/
+
+# Logs
+logs/
+*.log
+
+# Environment variables
+.env
+
+# IDE files
+.idea/
+.vscode/
