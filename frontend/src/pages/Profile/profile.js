@@ -5,9 +5,12 @@ import {
     Avatar, 
     Typography } from "@material-ui/core";
 import './styles.css';
+import Navbar from "../../components/navbar";
 
 const ProfilePage = () => {
   return (
+    <div>
+        <Navbar />
     <div className="profile-page">
         <div className="profile-card">
         <Grid
@@ -27,7 +30,8 @@ const ProfilePage = () => {
                     borderRadius: "10px 0px 0px 10px",
                 }}>
                 <div className="profile-card-content" style={{
-                      fontFamily: 'Poppins'
+                      fontFamily: 'Poppins',
+                        fontSize: '1.2rem',
                     }}>
                 Student Name : XYZ XYZ
                 <br/>
@@ -60,19 +64,14 @@ const ProfilePage = () => {
                 Birth Category : General
                 <br/>
                 Admission Allotted To Different Category : No
-                <br/>
-                Allotted Category : General
-                <br/>
-                Student Status:
-                <br/>
-                Nationality : Indian
-                <br/>
-                Religion :Unspecified
                 </div>
             </Grid>
 
             <Grid
                 item
+                direction="column"
+                alignItems="center"
+                justifyContent="center"
                 xs={6}
                 style={{
                     backgroundColor: "white",
@@ -92,8 +91,16 @@ const ProfilePage = () => {
                     </Avatar>
                 </div>
                 <div className="profile-card-content" style={{
-                      fontFamily: 'Poppins'
+                      fontFamily: 'Poppins',
+                      fontSize: '1.2rem',
                     }}>
+                    Allotted Category : General
+                    <br/>
+                    Student Status:
+                    <br/>
+                    Nationality : Indian
+                    <br/>
+                    Religion :Unspecified
                     Marital Status : Unspecified
                     <br/>
                     Guardian Name :
@@ -109,6 +116,8 @@ const ProfilePage = () => {
             </Grid>
         </Grid>
         </div>
+        
+    </div>
     </div>
   );
 };
