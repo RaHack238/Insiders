@@ -1,6 +1,6 @@
 username = 'sql12604183'
 password = 'ZdNaA3jEQb'
-hostname = 'http://sql12.freemysqlhosting.net'
+hostname = 'sql12.freemysqlhosting.net'
 database_name = 'sql12604183'
 port = 3306
 
