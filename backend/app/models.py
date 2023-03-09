@@ -65,3 +65,7 @@ class Classroom(db.Model):
     student_id=db.Column(db.Integer)
 
 # db.create_all()
+def get_all_users():
+    with app.app_context():
+        students = Student.query.all()
+        print(students)
