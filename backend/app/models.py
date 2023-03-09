@@ -21,11 +21,13 @@ class Grade(db.Model):
     _tablename_ = 'grade'
     student_id = db.Column(
         db.Integer,
-        db.ForeignKey('student.student_id')
+        db.ForeignKey('student.student_id'),
+        primary_key = True
         )
     course_id = db.Column(
         db.String,
-        db.ForeignKey('course.course_id')
+        db.ForeignKey('course.course_id'),
+        primary_key = True
         )
     grade_obtained = db.Column(db.String)
 
@@ -62,4 +64,4 @@ class Classroom(db.Model):
         )
     student_id=db.Column(db.Integer)
 
-db.create_all()
+# db.create_all()
