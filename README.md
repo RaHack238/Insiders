@@ -12,4 +12,6 @@ To use database through python interface, run the following commands:
     >>> from app.models import User, Post
     >>> app.app_context().push()
 
-    
+    For more information refer to the following article:
+        https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database
+        
