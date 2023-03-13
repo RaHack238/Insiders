@@ -3,7 +3,7 @@ from flask import request, jsonify
 from functools import wraps
 from app.models import Student, Teacher, Grade, Course
 from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
-
+import json 
 
 @app.route('/')
 def home():
@@ -24,9 +24,8 @@ def login():
     student_id=int(data['username'])
     password=data['password']
 
-    # user=Student.query.filter_by(student_id=student_id).first()
-    user={'student_id': 1, 'name': 'Rahul', 'contact': 1234567890, 'password': '1234'}
-    if user and user['password']=='1234':
+    user=Student.query.filter_by(student_id=student_id).first()
+    if user and user.login_password==password:
         access_token=create_access_token(identity=student_id)
         return jsonify(access_token=access_token), 200
     else:
@@ -37,28 +36,46 @@ def login():
 @jwt_required()
 def viewGrades():
     try:
-        username=get_jwt_identity()
-        user=Student.query.filter_by(student_id=username).first()
-        
-        # Remove the password from the user object
-        user.pop('login_password', None)
+        student_id=get_jwt_identity()
 
-        # I obtain the grades and course_id from the database
-        grades=Grade.query.filter_by(student_id=user['student_id']).all()
+        # Get the user's info
+        user = Student.query.filter_by(student_id=student_id).first().as_dict()
+        user.pop('login_password')
 
-        # I obtain the course description from the database
+        # Get the user's grades
+        grades = db.session.query(Course.course_id, Course.class_id, Grade.grade_obtained)\
+                .join(Grade, Grade.course_id == Course.course_id)\
+                .filter(Grade.student_id == student_id)\
+                .all()
+    
+        # Convert the results to a list of dictionaries
+        grade_list = []
         for grade in grades:
-            course=Course.query.filter_by(course_id=grade['course_id']).first()
-
-            grade['class_id']=course['class_id']
-
-            teacher_id=course['teacher_id']
-            teacher=Teacher.query.filter_by(teacher_id=teacher_id).first()
-            grade['teacher_name']=teacher['name']
-
+            grade_dict = {
+                'course_id': grade[0],
+                'class_id': grade[1],
+                'grade_obtained': grade[2]
+            }
+            grade_list.append(grade_dict)
         
-        return jsonify(user=user, grades=grades), 200
+        
+        return jsonify(user=json.dumps(user), grades=grade_list), 200
 
+    except Exception as e:
+        return jsonify(message=str(e)), 500
+
+
+
+@app.route('/viewProfile', methods=['GET'])
+@jwt_required()
+def viewProfile():
+    try:
+        student_id=get_jwt_identity()
+
+        # Get the user's info
+        user = Student.query.filter_by(student_id=student_id).first().as_dict()
+        user.pop('login_password')
+        return jsonify(user=user), 200
     except Exception as e:
         return jsonify(message=str(e)), 500
 
