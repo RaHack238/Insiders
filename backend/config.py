@@ -1,10 +1,9 @@
-username = 'sql12604183'
-password = 'ZdNaA3jEQb'
-hostname = 'sql12.freemysqlhosting.net'
-database_name = 'sql12604183'
-port = 3306
+import os
+basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config(object):
-    SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://{username}:{password}@{hostname}/{database_name}?port={port}"
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'being_insiders'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
+        'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     JWT_SECRET_KEY="Insiders_secret_key"
