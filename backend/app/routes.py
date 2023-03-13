@@ -1,4 +1,4 @@
-from app import app, jwt
+from app import app, jwt, db
 from flask import request, jsonify
 from functools import wraps
 from app.models import Student, Teacher, Grade, Course
@@ -59,7 +59,7 @@ def viewGrades():
             grade_list.append(grade_dict)
         
         
-        return jsonify(user=json.dumps(user), grades=grade_list), 200
+        return jsonify(user=user, grades=grade_list), 200
 
     except Exception as e:
         return jsonify(message=str(e)), 500
