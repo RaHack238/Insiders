@@ -3,6 +3,8 @@ import './App.css';
 import LoginPage from './pages/Login/login.js';
 import GradesPage from './pages/ViewGrades/grades.js';
 import ProfilePage from './pages/Profile/profile.js';
+import CourseRegistration from './pages/CourseRegistration/courseRegistration';
+import RequestIDCard from './pages/IdCard/requestCard';
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
             <Route path="/" element={<LoginPage />} />
             <Route path="/viewgrades" element={<GradesPage />} />
             <Route path="/viewprofile" element={<ProfilePage />} />
+            <Route path="/courseRegistration" element={<CourseRegistration />} />
+            <Route path="/requestIDCard" element={<RequestIDCard />} />
           </Routes>
         </BrowserRouter>
       </div>

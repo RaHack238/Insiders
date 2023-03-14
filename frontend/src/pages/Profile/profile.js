@@ -82,7 +82,11 @@ const ProfilePage = () => {
                     borderRadius: "0px 10px 10px 0px",
                 }}
             >
-                <div>
+                <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    marginTop: '2rem'
+                }}>
                     <Avatar style={{
                     width: 130,
                     height: 130

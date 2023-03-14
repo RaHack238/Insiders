@@ -2,14 +2,12 @@ import React from "react";
 import { 
   Avatar, 
   Typography } from "@material-ui/core";
-
 import GradesTable from "../../components/gradesTable";
 import './grades.css';
 import Navbar from "../../components/navbar";
 
 
 function GradesPage(){
-  
 
   return(
     <div>
