@@ -1,6 +1,10 @@
 from app import db
 
-class Student(db.Model):
+class BaseModel:
+    def as_dict(self):
+        return {c.name: str(getattr(self, c.name)) for c in self.__table__.columns}
+
+class Student(BaseModel,db.Model):
     _tablename_ = 'student'
     student_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
@@ -9,7 +13,16 @@ class Student(db.Model):
     department = db.Column(db.String)
     login_password = db.Column(db.String)
 
-class Teacher(db.Model):
+    def __init__(self, student_id, name, contact, batch, department, login_password):
+        self.student_id = student_id
+        self.name = name
+        self.contact = contact
+        self.batch = batch
+        self.department = department
+        self.login_password = login_password
+
+
+class Teacher(BaseModel,db.Model):
     _tablename_ = 'teacher'
     teacher_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
@@ -17,7 +30,7 @@ class Teacher(db.Model):
     department = db.Column(db.String)
     login_password = db.Column(db.String)
 
-class Grade(db.Model):
+class Grade(BaseModel,db.Model):
     _tablename_ = 'grade'
     student_id = db.Column(
         db.Integer,
@@ -32,7 +45,7 @@ class Grade(db.Model):
     grade_obtained = db.Column(db.String)
 
 
-class ExamResult(db.Model):
+class ExamResult(BaseModel,db.Model):
     _tablename_ = 'exam_result'
     exam_id = db.Column(db.String, primary_key=True)
     student_id = db.Column(
@@ -46,7 +59,7 @@ class ExamResult(db.Model):
     total_marks = db.Column(db.Integer)
     marks_scored = db.Column(db.Integer)
 
-class Course(db.Model):
+class Course(BaseModel,db.Model):
     _tablename_ = 'course'
     course_id = db.Column(db.String, primary_key=True)
     description = db.Column(db.String)
@@ -56,7 +69,7 @@ class Course(db.Model):
         db.ForeignKey('teacher.teacher_id')
         )
 
-class Classroom(db.Model):
+class Classroom(BaseModel,db.Model):
     _tablename_='classroom'
     class_id=db.Column(
         db.String,
@@ -65,7 +78,3 @@ class Classroom(db.Model):
     student_id=db.Column(db.Integer)
 
 # db.create_all()
-def get_all_users():
-    with app.app_context():
-        students = Student.query.all()
-        print(students)
