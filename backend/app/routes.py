@@ -1,9 +1,10 @@
 from app import app, jwt, db
 from flask import request, jsonify
 from functools import wraps
-from app.models import Student, Teacher, Grade, Course
+from app.models import Student, Teacher, Grade, Course, Classroom
 from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
 import json 
+from collections import defaultdict
 
 @app.route('/')
 def home():
@@ -31,38 +32,39 @@ def login():
     else:
         return jsonify(message="Bad username or password"), 401
 
-
 @app.route('/viewGrades', methods=['GET'])
 @jwt_required()
 def viewGrades():
     try:
-        student_id=get_jwt_identity()
+        student_id = get_jwt_identity()
 
         # Get the user's info
         user = Student.query.filter_by(student_id=student_id).first().as_dict()
         user.pop('login_password')
 
-        # Get the user's grades
-        grades = db.session.query(Course.course_id, Course.class_id, Grade.grade_obtained)\
-                .join(Grade, Grade.course_id == Course.course_id)\
-                .filter(Grade.student_id == student_id)\
-                .all()
-    
-        # Convert the results to a list of dictionaries
-        grade_list = []
+        # Fetch the user's grades and course information
+        grades = Grade.query.join(Course, Grade.course_id == Course.course_id) \
+                    .join(Classroom, Classroom.class_id == Course.class_id) \
+                    .filter(Classroom.student_id == student_id) \
+                    .with_entities(Classroom.sem, Course.course_name, Course.description, Course.credits, Classroom.elective_type, Grade.grade_obtained.label('grade')) \
+                    .all()
+
+        # Group the grades by semester
+        semesters = defaultdict(list)
         for grade in grades:
-            grade_dict = {
-                'course_id': grade[0],
-                'class_id': grade[1],
-                'grade_obtained': grade[2]
-            }
-            grade_list.append(grade_dict)
+            semesters[grade.sem].append(grade._asdict())
+            
         
-        
-        return jsonify(user=user, grades=grade_list), 200
+        # Format the grades as a dictionary
+        grade_dict = {}
+        for sem, grades in semesters.items():
+            grade_dict[f'sem{sem}'] = grades
+
+        return jsonify(user=user, grades=grade_dict), 200
 
     except Exception as e:
         return jsonify(message=str(e)), 500
+
 
 
 
@@ -79,6 +81,18 @@ def viewProfile():
     except Exception as e:
         return jsonify(message=str(e)), 500
 
+
+@app.route('/viewAllStudents', methods=['GET'])
+def viewAllStudents():
+    try:
+        students = Student.query.all()
+        student_list = []
+        for student in students:
+            student_dict = student.as_dict()
+            student_list.append(student_dict)
+        return jsonify(students=student_list), 200
+    except Exception as e:
+        return jsonify(message=str(e)), 500
     
 
 
