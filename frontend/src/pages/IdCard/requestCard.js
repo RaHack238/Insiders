@@ -43,7 +43,7 @@ function RequestIDCard() {
             <Navbar />
             <div>
                 <div className="id-card-heading">
-                    <p> Add User Details </p>
+                    <p> Scholarship Form </p>
                 </div>
 
                 <Grid container spacing={2} >
