@@ -36,7 +36,7 @@ export default function Requestidbutton() {
             >
                 Request i-Card
             </Button>
-            <Menu
+            {/* <Menu
                 id="basic-menu"
                 anchorEl={anchorEl}
                 open={open}
@@ -47,7 +47,7 @@ export default function Requestidbutton() {
             >
                 <MenuItem onClick={handleClose}>Edit My Details</MenuItem>
                 <MenuItem onClick={handleClose}>Show My Details</MenuItem>
-            </Menu>
+            </Menu> */}
         </div>
     );
 }

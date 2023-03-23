@@ -5,6 +5,7 @@ import GradesPage from './pages/ViewGrades/grades.js';
 import ProfilePage from './pages/Profile/profile.js';
 import CourseRegistration from './pages/CourseRegistration/courseRegistration';
 import RequestIDCard from './pages/IdCard/requestCard';
+import ScholarshipCard from './pages/Scholarship/scholarshipCard';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/viewprofile" element={<ProfilePage />} />
             <Route path="/courseRegistration" element={<CourseRegistration />} />
             <Route path="/requestIDCard" element={<RequestIDCard />} />
+            <Route path="/scholarship" element={<ScholarshipCard />} />
           </Routes>
         </BrowserRouter>
       </div>

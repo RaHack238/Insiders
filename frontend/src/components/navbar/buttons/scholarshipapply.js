@@ -14,7 +14,7 @@ export default function Scholarshipbutton() {
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
         console.log("handleClick called");
-        navigate("/requestIDCard");
+        navigate("/scholarship");
     };
 
     const handleClose = () => {
@@ -36,7 +36,7 @@ export default function Scholarshipbutton() {
             >
                 Apply Scholarship
             </Button>
-            <Menu
+            {/* <Menu
                 id="basic-menu"
                 anchorEl={anchorEl}
                 open={open}
@@ -47,7 +47,7 @@ export default function Scholarshipbutton() {
             >
                 <MenuItem onClick={handleClose}>Edit My Details</MenuItem>
                 <MenuItem onClick={handleClose}>Show My Details</MenuItem>
-            </Menu>
+            </Menu> */}
         </div>
     );
 }
