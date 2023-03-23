@@ -4,10 +4,10 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import './requestCard.css';
+import './scholarshipCard.css';
 import Navbar from "../../components/navbar";
 
-function RequestIDCard() {
+function ScholarshipCard() {
     
     const [bloodGroup, setBloodGroup] = useState('');
 
@@ -43,7 +43,7 @@ function RequestIDCard() {
             <Navbar />
             <div>
                 <div className="id-card-heading">
-                    <p> ID Request Form </p>
+                    <p> Scholarship Form </p>
                 </div>
 
                 <Grid container spacing={2} >
@@ -181,4 +181,4 @@ function RequestIDCard() {
     )
 }
 
-export default RequestIDCard;
+export default ScholarshipCard;
