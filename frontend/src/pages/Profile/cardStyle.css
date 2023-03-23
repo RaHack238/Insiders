@@ -1,0 +1,13 @@
+.main-heading{
+    font-family: 'Poppins';
+    font-size: 20;
+    font-weight: 600;
+    color: #00264d;
+}
+
+.main-value{
+    font-family: 'Poppins';
+    font-size: 18;
+    font-weight: 500;
+    color: white;
+}

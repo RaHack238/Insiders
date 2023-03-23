@@ -4,126 +4,154 @@ import { useNavigate } from "react-router-dom";
 import { 
     Avatar, 
     Typography } from "@material-ui/core";
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
 import './styles.css';
 import Navbar from "../../components/navbar";
+import DetailCard from "./detailCard";
 
 const ProfilePage = () => {
-  return (
+
+    const profileDetailHeadings = [
+        {
+            'title': 'Personal Details',
+            'url' : ''
+        },
+        {
+            'title': 'Address Details',
+            'url' : ''
+        },
+        {
+            'title': 'Student Degree Details',
+            'url' : ''
+        },
+        {
+            'title': 'Guide Details',
+            'url' : ''
+        }
+    ];
+
+    const personalDetails = [
+        {
+            'title' : 'Student Name',
+            'value' : 'Student Name'
+        },
+        {
+            'title' : "Father's Name",
+            'value' : "Father's Name"
+        },
+        {
+            'title' : 'Roll Number',
+            'value' : 'Roll No.'
+        },
+        {
+            'title' : 'Date of Birth',
+            'value' : 'DD-MM-YYYY'
+        },
+        {
+            'title' : 'Email',
+            'value' : 'student@iitgoa.ac.in'
+        },
+        {
+            'title' : 'Blood Group',
+            'value' : 'A+ve'
+        },
+        {
+            'title' : 'Mobile Number',
+            'value' : 'XXXXXXXXXX'
+        },
+
+    ];
+    
+    return (
     <div>
         <Navbar />
     <div className="profile-page">
-        <div className="profile-card">
-        <Grid
-            container
-            direction="row"
-            alignItems="center"
-            justifyContent="center"
-            style={{ height: "100%" }}
-            >
-            <Grid item xs={6} style={{
-                    height: "100%",
-                    width: "100%",
-                    backgroundColor: "white",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    borderRadius: "10px 0px 0px 10px",
-                }}>
-                <div className="profile-card-content" style={{
-                      fontFamily: 'Poppins',
-                        fontSize: '1.2rem',
-                    }}>
-                Student Name : XYZ XYZ
-                <br/>
-                Father Name : XYZ XYZ
-                <br/>
-                RollNo :1903105
-                <br/>
-                RollNo. Activated Date :29 Jul, 2019
-                <br/>
-                Date Of Birth :09 Sep, 2001
-                <br/>
-                Email : XYZ@IITGOA.AC.IN
-                <br/>
-                Alternate Email : xyz@gmail.com
-                <br/>
-                Mobile No : 8957484280
-                <br/>
-                Alternate Mobile No :8957484280
-                <br/>
-                Mother Tongue : Unspecified
-                <br/>
-                Blood Group : A Positive
-                <br/>
-                Gender : Male
-                <br/>
-                Is Physical Challenged : No
-                <br/>
-                Ph Description :
-                <br/>
-                Birth Category : General
-                <br/>
-                Admission Allotted To Different Category : No
+
+        <Grid container spacing={2}>
+            <Grid item xs={4}>
+                <div className="side-content">
+                    <div className="side-avatar">
+                        <Avatar style={{
+                            width: 130,
+                            height: 130
+                        }}>
+                                SN
+                        </Avatar>
+                    </div>
+                    
+                    <div className="text-content">
+                        <Typography style={{
+                            fontFamily: "Poppins",
+                            color: "#00264d",
+                            fontSize: 20,
+                            fontWeight: 600,
+                        }}>
+                            Student Name
+                        </Typography>
+                        <Typography style={{
+                            fontFamily: "Poppins",
+                            color: "#00264d",
+                            fontSize: 18
+                        }}>
+                            studentmail@iitgoa.ac.in
+                        </Typography>
+                    </div>
+
+                    <div className="sidebar-list">
+                        <List>
+                            <div>
+                            {profileDetailHeadings.map((content) => (
+                                <ListItem key={content.title} disablePadding style={{marginBottom: '0.5rem'}} >
+                                <ListItemButton
+                                    // style = {{backgroundColor: content.title === selectedButton ? '#1E4E92' : '', borderRadius: '4px'}}
+                                    >
+                                    <ListItemText 
+                                    disableTypography 
+                                    style={{
+                                        marginLeft: '2rem',
+                                        fontWeight: 600,
+                                        color:'#00264d', 
+                                        fontFamily: "Poppins",
+                                        fontSize: 18
+                                    }} 
+                                    primary={content.title} />
+                                </ListItemButton>
+                                </ListItem>))}
+                            </div>
+                        </List>
+                    </div>
                 </div>
             </Grid>
-
-            <Grid
-                item
-                direction="column"
-                alignItems="center"
-                justifyContent="center"
-                xs={6}
-                style={{
-                    backgroundColor: "white",
-                    height: "100%",
-                    width: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                    borderRadius: "0px 10px 10px 0px",
-                }}
-            >
-                <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    marginTop: '2rem'
-                }}>
-                    <Avatar style={{
-                    width: 130,
-                    height: 130
-                  }}>
-                        SN
-                    </Avatar>
-                </div>
-                <div className="profile-card-content" style={{
-                      fontFamily: 'Poppins',
-                      fontSize: '1.2rem',
+            <Grid item xs={8}>
+                <div className="major-content">
+                    <Typography style={{
+                        fontFamily: "Poppins",
+                        color: "#00264d",
+                        fontSize: 24,
+                        fontWeight: 600,
                     }}>
-                    Allotted Category : General
-                    <br/>
-                    Student Status:
-                    <br/>
-                    Nationality : Indian
-                    <br/>
-                    Religion :Unspecified
-                    Marital Status : Unspecified
-                    <br/>
-                    Guardian Name :
-                    <br/>
-                    Relation With Guardian :
-                    <br/>
-                    Name :
-                    <br/>
-                    Parent Email Id : xyz@gmail.com
-                    <br/>
-                    Guardian Mobile No : 8957484280
+                        Personal Details
+                    </Typography>
+
+                    <div className="detail-cards">
+                        <Grid container spacing={3}>
+                            {personalDetails.map((item) => {   
+                                return (
+                                    <Grid item xs={6}>
+                                        <DetailCard title={item.title} value={item.value} />
+                                    </Grid>)})}
+                        </Grid>
+                    </div>
                 </div>
             </Grid>
         </Grid>
-        </div>
         
     </div>
     </div>
-  );
+    );
 };
 
 export default ProfilePage;
