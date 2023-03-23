@@ -6,7 +6,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useNavigate } from "react-router-dom";
 
-export default function Amsbutton() {
+export default function CourseRegistrationbutton() {
     const [anchorEl, setAnchorEl] = useState(null);
     const navigate = useNavigate();
     const open = Boolean(anchorEl);
@@ -14,7 +14,7 @@ export default function Amsbutton() {
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
         console.log("handleClick called");
-        navigate("/viewgrades");
+        navigate("/courseRegistration");
     };
 
     const handleClose = () => {
@@ -34,7 +34,7 @@ export default function Amsbutton() {
                 aria-expanded={open ? 'false' : undefined}
                 onClick={handleClick}
             >
-                AMS
+                Course Registration
             </Button>
             {/* <Menu
                 id="basic-menu"

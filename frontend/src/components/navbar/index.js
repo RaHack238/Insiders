@@ -4,6 +4,7 @@ import Mydetailsbutton from './buttons/mydetails';
 import Requestidbutton from './buttons/requestid';
 import Amsbutton from './buttons/ams';
 import Scholarshipbutton from './buttons/scholarshipapply';
+import CourseRegistrationbutton from './buttons/courseregistration';
 
 const Navbar = () => (
     <header className='navbar'>
@@ -12,7 +13,8 @@ const Navbar = () => (
         <Amsbutton />
         <Requestidbutton />
         <Mydetailsbutton />    
-        <Scholarshipbutton />  
+        <Scholarshipbutton />
+        <CourseRegistrationbutton />
     </header>
 );
 
