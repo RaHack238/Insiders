@@ -6,6 +6,9 @@ import ProfilePage from './pages/Profile/profile.js';
 import CourseRegistration from './pages/CourseRegistration/courseRegistration';
 import RequestIDCard from './pages/IdCard/requestCard';
 import ScholarshipCard from './pages/Scholarship/scholarshipCard';
+import PersonalDetails from './pages/Profile/personalDetails';
+import AddressDetails from './pages/Profile/addressDetails';
+import StudentDegreeDetails from './pages/Profile/studentDegree';
 
 function App() {
   return (
@@ -14,7 +17,11 @@ function App() {
           <Routes>
             <Route path="/" element={<LoginPage />} />
             <Route path="/viewgrades" element={<GradesPage />} />
-            <Route path="/viewprofile" element={<ProfilePage />} />
+            <Route path="/viewprofile" element={<ProfilePage />} >
+              <Route index path="personalDetails" element={<PersonalDetails />} />
+              <Route path="addressDetails" element={<AddressDetails />} />
+              <Route path="studentDegree" element={<StudentDegreeDetails />} />
+            </Route>
             <Route path="/courseRegistration" element={<CourseRegistration />} />
             <Route path="/requestIDCard" element={<RequestIDCard />} />
             <Route path="/scholarship" element={<ScholarshipCard />} />

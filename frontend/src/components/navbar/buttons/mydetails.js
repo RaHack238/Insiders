@@ -17,7 +17,7 @@ export default function Mydetailsbutton() {
   
   const handleClose = () => {
     console.log("handleClose called");
-    navigate("/viewprofile");
+    navigate("/viewprofile/personalDetails");
     setAnchorEl(null);
   };
 

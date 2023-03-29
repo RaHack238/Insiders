@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Grid from "@material-ui/core/Grid";
 import { 
     Avatar, 
@@ -7,40 +7,26 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
+import { Link, Outlet } from 'react-router-dom';
 import './styles.css';
 import Navbar from "../../components/navbar";
-import PersonalDetails from "./personalDetails";
 
 const ProfilePage = () => {
 
     const profileDetailHeadings = [
         {
             'title': 'Personal Details',
-            'url' : '',
-            'paramValue' : 'personalDetails',
+            'url' : '/viewprofile/personalDetails',
         },
         {
             'title': 'Address Details',
-            'url' : '',
-            'paramValue' : 'addressDetails',
+            'url' : '/viewprofile/addressDetails',
         },
         {
             'title': 'Student Degree Details',
-            'url' : '',
-            'paramValue' : 'studentDegreeDetails',
+            'url' : '/viewprofile/studentDegree',
         },
-        {
-            'title': 'Guide Details',
-            'url' : '',
-            'paramValue' : 'guideDetails',
-        }
     ];
-    
-    const [selectedButton, setSelectedButton] = useState("");
-
-    function handleSelectedButtonClick(value){
-        setSelectedButton(value);
-    }
     
     return (
     <div>
@@ -80,23 +66,28 @@ const ProfilePage = () => {
                                 <List>
                                     <div>
                                     {profileDetailHeadings.map((content) => (
-                                        <ListItem key={content.title} disablePadding style={{marginBottom: '0.5rem'}} >
-                                        <ListItemButton
-                                            onClick={() => handleSelectedButtonClick(content.paramValue)}
-                                            // style = {{backgroundColor: content.title === selectedButton ? '#1E4E92' : '', borderRadius: '4px'}}
-                                            >
-                                            <ListItemText 
-                                            disableTypography 
-                                            style={{
-                                                marginLeft: '2rem',
-                                                fontWeight: 600,
-                                                color:'#00264d', 
-                                                fontFamily: "Poppins",
-                                                fontSize: 18
-                                            }} 
-                                            primary={content.title} />
-                                        </ListItemButton>
-                                        </ListItem>))}
+                                        <Link to={content.url} style={{ textDecoration: 'none' }}>
+                                            <ListItem key={content.title} disablePadding style={{marginBottom: '0.5rem'}} >
+                                                <ListItemButton
+                                                    // style = {{backgroundColor: content.title === selectedButton ? '#1E4E92' : '', borderRadius: '4px'}}
+                                                >
+                                                    <ListItemText 
+                                                        disableTypography 
+                                                        style={{
+                                                            fontWeight: 600,
+                                                            color:'#00264d', 
+                                                            fontFamily: "Poppins",
+                                                            fontSize: 18,
+                                                            paddingLeft: '1rem',
+                                                            paddingRight: '1rem',
+                                                            borderRadius: '20px',
+                                                        }} 
+                                                        primary={content.title} 
+                                                    />
+                                                </ListItemButton>
+                                            </ListItem>
+                                        </Link>
+                                        ))}
                                     </div>
                                 </List>
                             </div>
@@ -104,7 +95,7 @@ const ProfilePage = () => {
                 </Grid>
         
                 <Grid item xs={8}>
-                    <PersonalDetails />
+                    <Outlet />
                 </Grid>
             </Grid>
         </div>
