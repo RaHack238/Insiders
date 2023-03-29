@@ -49,21 +49,21 @@ function ScholarshipCard() {
                 <Grid container spacing={2} >
                     <Grid item xs={6}>
                         <div className="content-box">
-                            <Grid container spacing = {1.5} >
+                            <Grid container spacing = {1} >
                                 <Grid item xs={6} >
                                     <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-                                        <p>Type: </p>
+                                        <p>Have you  applied for any other Scholarships?: </p>
                                     </div>
                                     
                                 </Grid>
                                 <Grid item xs={6}>
                                     <div style={{marginLeft: '1rem'}}>
-                                        <TextField id="outlined-basic" label="Type" variant="outlined" />
+                                        <TextField id="outlined-basic" label="Yes/No" variant="outlined" />
                                     </div>
                                 </Grid>
                                 <Grid item xs={6}>
                                     <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-                                        <p>Name: </p>
+                                        <p>Organization Name: </p>
                                     </div>
                                 </Grid>
                                 <Grid item xs={6}>
@@ -72,62 +72,51 @@ function ScholarshipCard() {
                                     </div>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-                                        <p>Roll No: </p>
+                                    <div style={{display: 'flex', justifyContent: 'flex-end', marginBottom: '2rem'}}>
+                                        <p>From Date: </p>
                                     </div>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <div style={{marginLeft: '1rem'}}>
-                                        <TextField id="outlined-basic" label="Roll No." variant="outlined" />
-                                    </div>
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-                                        <p>Date of Birth: </p>
-                                    </div>
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <div style={{marginLeft: '1rem'}}>
+                                <div style={{marginLeft: '1rem', marginBottom: '2rem'}}>
                                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                                             <DemoContainer components={['DatePicker']}>
-                                                <DatePicker label="Date of Birth" />
+                                                <DatePicker label="Date" />
                                             </DemoContainer>
                                         </LocalizationProvider>
                                     </div>
                                 </Grid>
                                 <Grid item xs={6}>
                                     <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-                                        <p>Blood Group: </p>
+                                        <p>Have you getting any other Scholarship?: </p>
                                     </div>
                                 </Grid>
                                 <Grid item xs={6}>
                                     <div style={{marginLeft: '1rem'}}>
-                                        <FormControl fullWidth>
-                                            <InputLabel id="demo-simple-select-label">Blood Group</InputLabel>
-                                            <Select
-                                                labelId="demo-simple-select-label"
-                                                id="demo-simple-select"
-                                                value={bloodGroup}
-                                                label="Blood Group"
-                                                onChange={handleBloodGroupChange}
-                                            >
-                                                {bloodGroupData.map((bg) => {
-                                                    return(
-                                                        <MenuItem value={bg.value}>{bg.label}</MenuItem>
-                                                    )
-                                                })}
-                                            </Select>
-                                        </FormControl>
+                                        <TextField id="outlined-basic" label="Yes/No" variant="outlined" />
                                     </div>
                                 </Grid>
                                 <Grid item xs={6}>
                                     <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-                                        <p>Emergency Contact Number: </p>
+                                        <p>Organization Name: </p>
                                     </div>
                                 </Grid>
                                 <Grid item xs={6}>
                                     <div style={{marginLeft: '1rem'}}>
-                                        <TextField id="outlined-basic" label="Contact No." variant="outlined" />
+                                        <TextField id="outlined-basic" label="Name" variant="outlined" />
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{display: 'flex', justifyContent: 'flex-end', marginBottom: '2rem'}}>
+                                        <p>From Date: </p>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                <div style={{marginLeft: '1rem', marginBottom: '2rem'}}>
+                                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                            <DemoContainer components={['DatePicker']}>
+                                                <DatePicker label="Date" />
+                                            </DemoContainer>
+                                        </LocalizationProvider>
                                     </div>
                                 </Grid>
                                 <Grid item xs={6}>
@@ -151,7 +140,34 @@ function ScholarshipCard() {
                         display: 'flex',
                         justifyContent: 'center'
                     }}>
-                        <div>Avatar</div>
+                         <div className="content-box">
+                            <Grid container spacing = {1} >
+                            <Grid item xs={6}>
+                                    <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                                        <p>Organization Name: </p>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{marginLeft: '1rem'}}>
+                                        <TextField id="outlined-basic" label="Name" variant="outlined" />
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{display: 'flex', justifyContent: 'flex-end', marginBottom: '2rem'}}>
+                                        <p>From Date: </p>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                <div style={{marginLeft: '1rem', marginBottom: '2rem'}}>
+                                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                            <DemoContainer components={['DatePicker']}>
+                                                <DatePicker label="Date" />
+                                            </DemoContainer>
+                                        </LocalizationProvider>
+                                    </div>
+                                </Grid>
+                            </Grid>
+                        </div>
                     </Grid>
                 </Grid>
                 <div style={{

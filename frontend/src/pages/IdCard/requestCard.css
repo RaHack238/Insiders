@@ -9,3 +9,12 @@
 .content-box{
     font-family: 'Poppins';
 }
+
+.upload-btn{
+    background: #00264d;
+    color: white;
+    padding: 0.6rem;
+    border-radius: 15px;
+    margin-left: 2rem;
+    cursor: pointer;
+}

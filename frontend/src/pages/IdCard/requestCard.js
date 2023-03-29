@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, TextField, InputLabel, FormControl, Select, MenuItem, Button } from "@mui/material";
+import { Grid, TextField, InputLabel, FormControl, Select, MenuItem, Button, Box } from "@mui/material";
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -8,7 +8,8 @@ import './requestCard.css';
 import Navbar from "../../components/navbar";
 
 function RequestIDCard() {
-    
+    const [signature, setSignature] = useState("");
+    const [image, setImage] = useState("");
     const [bloodGroup, setBloodGroup] = useState('');
 
     const bloodGroupData = [
@@ -149,9 +150,101 @@ function RequestIDCard() {
                     </Grid>
                     <Grid item xs={6} style={{
                         display: 'flex',
-                        justifyContent: 'center'
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        paddingLeft: '7rem'
                     }}>
-                        <div>Avatar</div>
+                        <div style={{display: 'flex', marginBottom: '0.5rem'}}>
+                            <div>
+                                <Box
+                                    display="flex"
+                                    justifyContent="center"
+                                    alignItems="center"
+                                    height="150px"
+                                    width="210px"
+                                    maxHeight="150px"
+                                    maxWidth="210px"
+                                    minHeight="150px"
+                                    minWidth="210px"
+                                    sx={{
+                                        border: "1px dashed grey",
+                                        overflow: "hidden",
+                                        objectFit: "contain",
+                                        borderRadius: "8px",
+                                    }}
+                                >
+                                    {signature ? (
+                                        <div >
+                                            <img src={URL.createObjectURL(signature)} height="100%" width="100%" />
+                                        </div>
+                                    ) : (
+                                        <div style={{ fontSize: 12 }}>
+                                            <p>Upload Signature</p>
+                                        </div>
+                                    )}
+                                    </Box>
+                            </div>
+
+                            <div style={{display: 'flex', alignItems: 'center'}}>
+                                <label htmlFor="select-signature" >
+                                    <div className="upload-btn">
+                                        Upload Signature
+                                    </div>
+                                </label>
+                                <input
+                                    style={{ display: "none" }}
+                                    type="file"
+                                    id="select-signature"
+                                    onChange={(e) => { setSignature(e.target.files[0]) }} 
+                                />
+                            </div>
+                        </div>
+
+                        <div style={{display: 'flex',  marginTop: '0.5rem'}}>
+                            <div>
+                                <Box
+                                    display="flex"
+                                    justifyContent="center"
+                                    alignItems="center"
+                                    height="150px"
+                                    width="210px"
+                                    maxHeight="150px"
+                                    maxWidth="210px"
+                                    minHeight="150px"
+                                    minWidth="210px"
+                                    sx={{
+                                        border: "1px dashed grey",
+                                        overflow: "hidden",
+                                        objectFit: "contain",
+                                        borderRadius: "8px",
+                                    }}
+                                >
+                                    {image ? (
+                                        <div >
+                                            <img src={URL.createObjectURL(image)} height="100%" width="100%" />
+                                        </div>
+                                    ) : (
+                                        <div style={{ fontSize: 12 }}>
+                                            <p>Upload your Image</p>
+                                        </div>
+                                    )}
+                                    </Box>
+                            </div>
+
+                            <div style={{display: 'flex', alignItems: 'center'}}>
+                                <label htmlFor="select-image" >
+                                    <div className="upload-btn">
+                                        Upload your Image
+                                    </div>
+                                </label>
+                                <input
+                                    style={{ display: "none" }}
+                                    type="file"
+                                    id="select-image"
+                                    onChange={(e) => { setImage(e.target.files[0]) }} 
+                                />
+                            </div>
+                        </div>
                     </Grid>
                 </Grid>
                 <div style={{
