@@ -121,30 +121,7 @@ function ScholarshipCard() {
                                 </Grid>
                                 <Grid item xs={6}>
                                     <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-                                        <p>Postal Address: </p>
-                                    </div>
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <div style={{marginLeft: '1rem'}}>
-                                        <textarea name="postalAddress" rows={6} cols={30} style={{borderColor: 'lightgray'}}/>
-                                    </div>
-                                </Grid>
-
-                                
-                                    
-
-                            </Grid>
-                        </div>
-                    </Grid>
-                    <Grid item xs={6} style={{
-                        display: 'flex',
-                        justifyContent: 'center'
-                    }}>
-                         <div className="content-box">
-                            <Grid container spacing = {1} >
-                            <Grid item xs={6}>
-                                    <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-                                        <p>Organization Name: </p>
+                                        <p>Bank Name: </p>
                                     </div>
                                 </Grid>
                                 <Grid item xs={6}>
@@ -154,6 +131,70 @@ function ScholarshipCard() {
                                 </Grid>
                                 <Grid item xs={6}>
                                     <div style={{display: 'flex', justifyContent: 'flex-end', marginBottom: '2rem'}}>
+                                        <p>Bank Branch Name: </p>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{marginLeft: '1rem', marginBottom: '2rem'}}>
+                                        <TextField id="outlined-basic" label="Branch" variant="outlined" />
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                                        <p>Father's Occupation: </p>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{marginLeft: '1rem'}}>
+                                        <TextField id="outlined-basic" label="Occupation" variant="outlined" />
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                                        <p>Mother's Occupation: </p>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{marginLeft: '1rem'}}>
+                                        <TextField id="outlined-basic" label="Occupation" variant="outlined" />
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                                        <p>Guardian's Occupation: </p>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{marginLeft: '1rem'}}>
+                                        <TextField id="outlined-basic" label="Occupation" variant="outlined" />
+                                    </div>
+                                </Grid>
+                                
+                                    
+
+                            </Grid>
+                        </div>
+                    </Grid>
+                    <Grid item xs={6} style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        paddingRight: '10rem'
+                    }}>
+                         <div className="content-box">
+                            <Grid container spacing = {1} >
+                                <Grid item xs={6}>
+                                    <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                                        <p>Scholarship Amount: </p>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{marginLeft: '1rem'}}>
+                                        <TextField id="outlined-basic" label="Amount" variant="outlined" />
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{display: 'flex', justifyContent: 'flex-end', marginBottom: '6.5rem'}}>
                                         <p>From Date: </p>
                                     </div>
                                 </Grid>
@@ -164,6 +205,80 @@ function ScholarshipCard() {
                                                 <DatePicker label="Date" />
                                             </DemoContainer>
                                         </LocalizationProvider>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                                        <p>Scholarship Amount: </p>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{marginLeft: '1rem'}}>
+                                        <TextField id="outlined-basic" label="Amount" variant="outlined" />
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{display: 'flex', justifyContent: 'flex-end', marginBottom: '6rem'}}>
+                                        <p>From Date: </p>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                <div style={{marginLeft: '1rem', marginBottom: '2rem'}}>
+                                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                            <DemoContainer components={['DatePicker']}>
+                                                <DatePicker label="Date" />
+                                            </DemoContainer>
+                                        </LocalizationProvider>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                                        <p>Account Number: </p>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{marginLeft: '1rem'}}>
+                                        <TextField id="outlined-basic" label="Acc. No." variant="outlined" />
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{display: 'flex', justifyContent: 'flex-end', marginBottom: '2rem'}}>
+                                        <p>IFSC Code: </p>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{marginLeft: '1rem', marginBottom: '2rem'}}>
+                                        <TextField id="outlined-basic" label="IFSC Code" variant="outlined" />
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                                        <p>Father's Income: </p>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{marginLeft: '1rem'}}>
+                                        <TextField id="outlined-basic" label="Amount" variant="outlined" />
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                                        <p>Mother's Income: </p>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{marginLeft: '1rem'}}>
+                                        <TextField id="outlined-basic" label="Amount" variant="outlined" />
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                                        <p>Guardian's Income: </p>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{marginLeft: '1rem'}}>
+                                        <TextField id="outlined-basic" label="Income" variant="outlined" />
                                     </div>
                                 </Grid>
                             </Grid>
