@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { 
   Table, 
   TableBody,
@@ -10,24 +11,60 @@ import {
 const GradesTable = () => {
   
   const rows = [
-    {
-      'course' : 'Course Code 1',
-      'courseTitle' : 'Course Name 1',
-      'credits' : 'Course Credits 1',
-      'registrationType': 'Registration Type 1',
-      'electiveType' : 'Elective Type 1',
-      'grade' : 'Grade 1'
+      {
+        "course_name": "course_10",
+        "credits": "4",
+        "description": "NA",
+        "elective_type": "NA",
+        "grade": "F",
+        "sem": "2"
     },
     {
-      'course' : 'Course Code 2',
-      'courseTitle' : 'Course Name 2',
-      'credits' : 'Course Credits 2',
-      'registrationType': 'Registration Type 2',
-      'electiveType' : 'Elective Type 2',
-      'grade' : 'Grade 2'
+        "course_name": "course_10",
+        "credits": "4",
+        "description": "NA",
+        "elective_type": "NA",
+        "grade": "A",
+        "sem": "2"
+    },
+    {
+        "course_name": "course_10",
+        "credits": "4",
+        "description": "NA",
+        "elective_type": "NA",
+        "grade": "A",
+        "sem": "2"
     }
-  ];
+];
 
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+    console.log(localStorage.getItem('Authorization') + ' is the token');
+    axios.get('http://127.0.0.1:5000/viewGrades', {
+      headers: {
+        'Authorization': localStorage.getItem('Authorization')
+      }
+    })
+      .then(response => {
+        console.log(response.data); // log the data to the console
+        setData(response.data.grades);
+      }).finally(() => {
+        setLoading(false);
+        console.log("final data ---------->"+data);
+      })
+      .catch(error => console.log(error));
+  }, []);
+  const mappedObjectOfObjects = Object.keys(data).map((key) => {
+    return {
+      ...data[key],
+      id: key,
+    };
+  });
+  
+  console.log(mappedObjectOfObjects);
     return (
       <TableContainer>
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -64,39 +101,40 @@ const GradesTable = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {rows.map((row) => (
+                  {rows.map((grade) => (
                     <TableRow
-                      key={row.name}
+                      // key={grade.course_name}
                       sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
                       <TableCell style={{
                         fontFamily: 'Poppins',
                         borderBottom: '1px solid #00264d',
                       }} component="th" scope="row">
-                        {row.course}
+                        {grade.course_name}
                       </TableCell>
                       <TableCell style={{
                         fontFamily: 'Poppins',
                         borderBottom: '1px solid #00264d',
-                      }}align="right">{row.courseTitle}</TableCell>
+                      }}align="right"> {grade.course_name}</TableCell>
                       <TableCell style={{
                         fontFamily: 'Poppins',
                         borderBottom: '1px solid #00264d',
-                      }}align="right">{row.credits}</TableCell>
+                      }}align="right"> {grade.credits}</TableCell>
                       <TableCell style={{
                         fontFamily: 'Poppins',
                         borderBottom: '1px solid #00264d',
-                      }}align="right">{row.registrationType}</TableCell>
+                      }}align="right"> {grade.elective_type}</TableCell>
                       <TableCell style={{
                         fontFamily: 'Poppins',
                         borderBottom: '1px solid #00264d',
-                      }}align="right">{row.electiveType}</TableCell>
+                      }}align="right"> {grade.elective_type}</TableCell>
                       <TableCell style={{
                         fontFamily: 'Poppins',
                         borderBottom: '1px solid #00264d',
-                      }}align="right">{row.grade}</TableCell>
+                      }}align="right"> {grade.grade}</TableCell>
                     </TableRow>
-                  ))}
+                  )
+                  )}
                 </TableBody>
               </Table>
             </TableContainer>
