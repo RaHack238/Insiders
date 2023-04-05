@@ -119,4 +119,20 @@ class Classroom(BaseModel,db.Model):
         self.sem = sem
         self.elective_type = elective_type
 
+
+class ICard(BaseModel, db.Model):
+    __tablename__ = 'icard'
+    student_id = db.Column(
+        db.Integer,
+        db.ForeignKey('student.student_id'),
+        primary_key=True
+    )
+    sign = db.Column(db.LargeBinary)
+    image = db.Column(db.LargeBinary)
+
+    def __init__(self, student_id, sign, image):
+        self.student_id = student_id
+        self.sign = sign
+        self.image = image
+
 # db.create_all()

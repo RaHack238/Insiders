@@ -1,7 +1,7 @@
 from app import app, jwt, db
 from flask import request, jsonify
 from functools import wraps
-from app.models import Student, Teacher, Grade, Course, Classroom
+from app.models import Student, Teacher, Grade, Course, Classroom, ICard
 from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
 import json 
 from collections import defaultdict
@@ -10,7 +10,7 @@ from collections import defaultdict
 def home():
     return "Welcome To IIT Goa Ams Poral"
 
-@app.route('/index')
+@app.route('/index', methods=['GET'])
 @jwt_required()
 def index():
     user=get_jwt_identity()
@@ -91,6 +91,21 @@ def viewAllStudents():
             student_dict = student.as_dict()
             student_list.append(student_dict)
         return jsonify(students=student_list), 200
+    except Exception as e:
+        return jsonify(message=str(e)), 500
+
+
+@app.route('/icardSubmit', methods=['POST'])
+@jwt_required()
+def icardSubmit():
+    try:
+        student_id=get_jwt_identity()
+        data=request.get_json()
+        sign=data['sign']
+        image=data['image']
+        icard=ICard(student_id=student_id, sign=sign, image=image)
+        db.session.add(icard)
+        db.session.commit()
     except Exception as e:
         return jsonify(message=str(e)), 500
     
