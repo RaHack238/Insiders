@@ -135,4 +135,56 @@ class ICard(BaseModel, db.Model):
         self.sign = sign
         self.image = image
 
-# db.create_all()
+class ScholarshipDB(BaseModel, db.Model):
+    __tablename__ = 'scholarship_db'
+    student_id = db.Column(
+        db.Integer,
+        db.ForeignKey('student.student_id'),
+        primary_key=True
+    )
+    otherAppliedScholarships = db.Column(db.String)
+    otherAppliedScholarshipsAmount = db.Column(db.Integer)
+    otherAppliedScholarshipsOrganization = db.Column(db.String)
+    otherAppliedScholarshipsStartDate = db.Column(db.Date)
+    otherAppliedScholarshipsEndDate = db.Column(db.Date)
+
+    ongoingScholarships = db.Column(db.String)
+    ongoingScholarshipsAmount = db.Column(db.Integer)
+    ongoingScholarshipsOrganization = db.Column(db.String)
+    ongoingScholarshipsStartDate = db.Column(db.Date)
+    ongoingScholarshipsEndDate = db.Column(db.Date)
+
+    bankName = db.Column(db.String)
+    bankAccountNumber = db.Column(db.String)
+    bankIFSC = db.Column(db.String)
+    bankBranch = db.Column(db.String)
+
+    fatherOccupation = db.Column(db.String)
+    fatherIncome = db.Column(db.Integer)
+    motherOccupation = db.Column(db.String)
+    motherIncome = db.Column(db.Integer)
+    guardianOccupation = db.Column(db.String)
+    guardianIncome = db.Column(db.Integer)
+
+    def __init__(self, student_id, otherAppliedScholarships, otherAppliedScholarshipsAmount, otherAppliedScholarshipsOrganization, otherAppliedScholarshipsStartDate, otherAppliedScholarshipsEndDate, ongoingScholarships, ongoingScholarshipsAmount, ongoingScholarshipsOrganization, ongoingScholarshipsStartDate, ongoingScholarshipsEndDate, bankName, bankAccountNumber, bankIFSC, bankBranch, fatherOccupation, fatherIncome, motherOccupation, motherIncome, guardianOccupation, guardianIncome):
+        self.student_id = student_id
+        self.otherAppliedScholarships = otherAppliedScholarships
+        self.otherAppliedScholarshipsAmount = otherAppliedScholarshipsAmount
+        self.otherAppliedScholarshipsOrganization = otherAppliedScholarshipsOrganization
+        self.otherAppliedScholarshipsStartDate = otherAppliedScholarshipsStartDate
+        self.otherAppliedScholarshipsEndDate = otherAppliedScholarshipsEndDate
+        self.ongoingScholarships = ongoingScholarships
+        self.ongoingScholarshipsAmount = ongoingScholarshipsAmount
+        self.ongoingScholarshipsOrganization = ongoingScholarshipsOrganization
+        self.ongoingScholarshipsStartDate = ongoingScholarshipsStartDate
+        self.ongoingScholarshipsEndDate = ongoingScholarshipsEndDate
+        self.bankName = bankName
+        self.bankAccountNumber = bankAccountNumber
+        self.bankIFSC = bankIFSC
+        self.bankBranch = bankBranch
+        self.fatherOccupation = fatherOccupation
+        self.fatherIncome = fatherIncome
+        self.motherOccupation = motherOccupation
+        self.motherIncome = motherIncome
+        self.guardianOccupation = guardianOccupation
+        self.guardianIncome = guardianIncome
