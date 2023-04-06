@@ -10,7 +10,7 @@ import {
 
 const GradesTable = () => {
   
-  const rows = [
+const rows = [
       {
         "course_name": "course_10",
         "credits": "4",
@@ -34,7 +34,119 @@ const GradesTable = () => {
         "elective_type": "NA",
         "grade": "A",
         "sem": "2"
-    }
+    },
+    {
+      "course_name": "course_3",
+      "credits": "4",
+      "description": "NA",
+      "elective_type": "NA",
+      "grade": "B+",
+      "sem": "4"
+  },
+  {
+      "course_name": "course_3",
+      "credits": "4",
+      "description": "NA",
+      "elective_type": "NA",
+      "grade": "F",
+      "sem": "4"
+  },
+  {
+      "course_name": "course_3",
+      "credits": "4",
+      "description": "NA",
+      "elective_type": "NA",
+      "grade": "A+",
+      "sem": "4"
+  },
+  {
+      "course_name": "course_3",
+      "credits": "4",
+      "description": "NA",
+      "elective_type": "NA",
+      "grade": "A",
+      "sem": "4"
+  },
+  {
+    "course_name": "course_8",
+    "credits": 2,
+    "description": "NA",
+    "elective_type": "NA",
+    "grade": "F",
+    "sem": 5
+},
+{
+    "course_name": "course_8",
+    "credits": "2",
+    "description": "NA",
+    "elective_type": "NA",
+    "grade": "B",
+    "sem": "5"
+},
+{
+  "course_name": "course_4",
+  "credits": "2",
+  "description": "NA",
+  "elective_type": "NA",
+  "grade": "A",
+  "sem": "7"
+},
+{
+  "course_name": "course_3",
+  "credits": "4",
+  "description": "NA",
+  "elective_type": "NA",
+  "grade": "B+",
+  "sem": "7"
+},
+{
+  "course_name": "course_3",
+  "credits": "4",
+  "description": "NA",
+  "elective_type": "NA",
+  "grade": "F",
+  "sem": "7"
+},
+{
+  "course_name": "course_3",
+  "credits": "4",
+  "description": "NA",
+  "elective_type": "NA",
+  "grade": "A+",
+  "sem": "7"
+},
+{
+  "course_name": "course_3",
+  "credits": "4",
+  "description": "NA",
+  "elective_type": "NA",
+  "grade": "A",
+  "sem": "7"
+},
+{
+  "course_name": "course_14",
+  "credits": "4",
+  "description": "NA",
+  "elective_type": "NA",
+  "grade": "F",
+  "sem": "8"
+},
+{
+  "course_name": "course_14",
+  "credits": "4",
+  "description": "NA",
+  "elective_type": "NA",
+  "grade": "F",
+  "sem": "8"
+},
+{
+  "course_name": "course_14",
+  "credits": "4",
+  "description": "NA",
+  "elective_type": "NA",
+  "grade": "F",
+  "sem": "8"
+}
 ];
 
   const [data, setData] = useState([]);
@@ -49,7 +161,7 @@ const GradesTable = () => {
       }
     })
       .then(response => {
-        console.log(response.data); // log the data to the console
+        console.log("data ----->" +response.data); // log the data to the console
         setData(response.data.grades);
       }).finally(() => {
         setLoading(false);
@@ -76,7 +188,7 @@ const GradesTable = () => {
                       fontFamily: 'Poppins',
                       color: 'white',
                     }} align="center">
-                      Course
+                      Semester
                     </TableCell>
                     <TableCell style={{
                       fontFamily: 'Poppins',
@@ -109,8 +221,8 @@ const GradesTable = () => {
                       <TableCell style={{
                         fontFamily: 'Poppins',
                         borderBottom: '1px solid #00264d',
-                      }} component="th" scope="row">
-                        {grade.course_name}
+                      }} component="th" scope="row" align="center">
+                        {grade.sem}
                       </TableCell>
                       <TableCell style={{
                         fontFamily: 'Poppins',
