@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { 
   Table, 
   TableBody,
@@ -8,7 +7,10 @@ import {
   TableHead,
   TableRow, } from "@material-ui/core";
 
-const GradesTable = () => {
+const GradesTable = (gradesData) => {
+
+  const grades = gradesData.gradesData; 
+  console.log("**** gradesData:   ", grades);
   
 const rows = [
       {
@@ -149,102 +151,83 @@ const rows = [
 }
 ];
 
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(true);
-    console.log(localStorage.getItem('Authorization') + ' is the token');
-    axios.get('http://127.0.0.1:5000/viewGrades', {
-      headers: {
-        'Authorization': localStorage.getItem('Authorization')
-      }
-    })
-      .then(response => {
-        setData(JSON.stringify(response.data));
-        console.log("**** response:   " + data + "  ****");
-      }).finally(() => {
-        setLoading(false);
-      })
-      .catch(error => console.log(error));
-  }, []);
-
-    
-
     return (
-      <TableContainer>
-              <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <TableHead>
-                  <TableRow style={{
-                    backgroundColor: '#00264d',
-                  }}>
-                    <TableCell style={{
-                      fontFamily: 'Poppins',
-                      color: 'white',
-                    }} align="center">
-                      Semester
-                    </TableCell>
-                    <TableCell style={{
-                      fontFamily: 'Poppins',
-                      color: 'white',
-                    }} align="right">Course Title</TableCell>
-                    <TableCell style={{
-                      fontFamily: 'Poppins',
-                      color: 'white',
-                    }} align="right">Credits</TableCell>
-                    <TableCell style={{
-                      fontFamily: 'Poppins',
-                      color: 'white',
-                    }} align="right">Registration Type</TableCell>
-                    <TableCell style={{
-                      fontFamily: 'Poppins',
-                      color: 'white',
-                    }} align="right">Elective Type</TableCell>
-                    <TableCell style={{
-                      fontFamily: 'Poppins',
-                      color: 'white',
-                    }} align="right">Grade</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {rows.map((grade) => (
-                    
-                    <TableRow
-                      // key={grade.course_name}
-                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                    >
+      <div>
+        {Object.keys(grades).map((semester, i) => (
+        <div>
+          <div style={{
+            textAlign: 'center',
+            fontFamily: "Poppins",
+            color: "#00264d",
+            background: "#a5bfd7",
+            fontSize: 30 }}>
+              {semester}
+          </div>
+            <TableContainer>
+                <Table sx={{ minWidth: 550 }} aria-label="simple table">
+                  <TableHead>
+                    <TableRow style={{
+                      backgroundColor: '#00264d',
+                    }}>
                       <TableCell style={{
                         fontFamily: 'Poppins',
-                        borderBottom: '1px solid #00264d',
-                      }} component="th" scope="row" align="center">
-                        {grade.sem}
-                      </TableCell>
+                        color: 'white',
+                      }} align="center">Course Title</TableCell>
                       <TableCell style={{
                         fontFamily: 'Poppins',
-                        borderBottom: '1px solid #00264d',
-                      }}align="right"> {grade.course_name}</TableCell>
+                        color: 'white',
+                      }} align="center">Credits</TableCell>
                       <TableCell style={{
                         fontFamily: 'Poppins',
-                        borderBottom: '1px solid #00264d',
-                      }}align="right"> {grade.credits}</TableCell>
+                        color: 'white',
+                      }} align="center">Registration Type</TableCell>
                       <TableCell style={{
                         fontFamily: 'Poppins',
-                        borderBottom: '1px solid #00264d',
-                      }}align="right"> {grade.elective_type}</TableCell>
+                        color: 'white',
+                      }} align="center">Elective Type</TableCell>
                       <TableCell style={{
                         fontFamily: 'Poppins',
-                        borderBottom: '1px solid #00264d',
-                      }}align="right"> {grade.elective_type}</TableCell>
-                      <TableCell style={{
-                        fontFamily: 'Poppins',
-                        borderBottom: '1px solid #00264d',
-                      }}align="right"> {grade.grade}</TableCell>
+                        color: 'white',
+                      }} align="center">Grade</TableCell>
                     </TableRow>
-                  )
-                  )}
-                </TableBody>
-              </Table>
-            </TableContainer>
+                  </TableHead>
+                  {Object.keys(grades[semester]).map((course, i) => (
+                  <TableBody>
+                      <TableRow
+                        // key={grade.course_name}
+                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                      >
+                        <TableCell style={{
+                          fontFamily: 'Poppins',
+                          borderBottom: '1px solid #00264d',
+                        }}align="center"> {course}</TableCell>
+                        <TableCell style={{
+                          fontFamily: 'Poppins',
+                          borderBottom: '1px solid #00264d',
+                        }}align="center"> {grades[semester][course]['credits']}</TableCell>
+                        <TableCell style={{
+                          fontFamily: 'Poppins',
+                          borderBottom: '1px solid #00264d',
+                        }}align="center"> {grades[semester][course]['description']}</TableCell>
+                        <TableCell style={{
+                          fontFamily: 'Poppins',
+                          borderBottom: '1px solid #00264d',
+                        }}align="center"> {grades[semester][course]['elective_type']}</TableCell>
+                        <TableCell style={{
+                          fontFamily: 'Poppins',
+                          borderBottom: '1px solid #00264d',
+                        }}align="center"> {grades[semester][course]['grade']}</TableCell>
+                      </TableRow>
+                  </TableBody>
+                  ))}
+                </Table>
+              </TableContainer>
+          
+          
+          </div>
+        ))}
+      </div>
+          
     );
   };
   

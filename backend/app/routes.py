@@ -5,6 +5,8 @@ from app.models import Student, Teacher, Grade, Course, Classroom, ICard, Schola
 from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
 import json 
 from collections import defaultdict
+from datetime import datetime
+
 
 @app.route('/')
 def home():
@@ -32,6 +34,7 @@ def login():
     else:
         return jsonify(message="Bad username or password"), 401
 
+
 @app.route('/viewGrades', methods=['GET'])
 @jwt_required()
 def viewGrades():
@@ -50,17 +53,12 @@ def viewGrades():
                     .all()
 
         # Group the grades by semester
-        semesters = defaultdict(list)
+        semesters = defaultdict(dict)
         for grade in grades:
-            semesters[grade.sem].append(grade._asdict())
-            
+            semesters[f'sem{grade.sem}'][grade.course_name] = grade._asdict()
+            semesters[f'sem{grade.sem}'][grade.course_name].pop('course_name')
         
-        # Format the grades as a dictionary
-        grade_dict = {}
-        for sem, grades in semesters.items():
-            grade_dict[f'sem{sem}'] = grades
-
-        return jsonify(user=user, grades=grade_dict), 200
+        return jsonify(user=user, grades=semesters), 200
 
     except Exception as e:
         return jsonify(message=str(e)), 500
@@ -110,7 +108,6 @@ def icardSubmit():
         return jsonify(message=str(e)), 500
     
 
-from datetime import datetime
 
 @app.route('/submitScholarship', methods=['POST'])
 @jwt_required()
@@ -187,4 +184,4 @@ def viewScholarship():
 
 
 
-
+ 
