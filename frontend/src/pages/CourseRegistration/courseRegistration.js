@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './style.css'; // import CSS file
+import Navbar from '../../components/navbar';
 
 const courses = [
   { id: 1, name: 'Course 1', price: 10 },
@@ -35,6 +36,8 @@ function CourseRegistration() {
   };
 
   return (
+    <div>
+      <Navbar />
     <div className="course-registration-container">
       <h1>Course Registration</h1>
       <p>Select the courses you want to register:</p>
@@ -54,6 +57,7 @@ function CourseRegistration() {
         ))}
       </ul>
       {/* <p className="total-price">Total price: ${totalPrice}</p> */}
+    </div>
     </div>
   );
 }

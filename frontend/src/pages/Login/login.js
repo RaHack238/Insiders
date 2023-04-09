@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import { useNavigate } from "react-router-dom";
 import './styles.css';
 import IITGoaLogo from "../../images/iit_goa_logo.svg";
-import axios from 'axios';
+import axios from 'axios'
 
 function LoginPage() {
 
@@ -15,30 +15,20 @@ function LoginPage() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log("Handle submit called");
 
-        //Sending username & password in json format to  http://127.0.0.1:5000 and recieve a jwt token.
         const payload = {
             username: username,
-            password: password,
+            password: password
         }
-        axios.post("http://127.0.0.1:5000/login", payload, {
-            headers: {
-                "Content-Type": "application/json",
-            }
-        }).then((response) => {
-            console.log(response);
+        axios.post('http://127.0.0.1:5000/login', payload).then(response => {
             if (response.status === 200) {
-                //redirect to home page and set jwt token in local storage
-                localStorage.setItem("Authorization", "Bearer " + response.data.access_token);
-                navigate("/viewgrades");
+                // redirect to home page and set jwt token in local storage
+                localStorage.setItem('Authorization', 'Bearer ' + response.data.access_token);
+                navigate('/viewgrades');
             } else {
-                setError("Incorrect username or password");
+                setError('Incorrect username or password');
             }
-        }).catch((error) => {
-            setError("Something went wrong. Please try again later.");
         });
-
     }
 
     return (
@@ -139,4 +129,4 @@ function LoginPage() {
     );
 }
 
-export default LoginPage;
+export default LoginPage;                                                   

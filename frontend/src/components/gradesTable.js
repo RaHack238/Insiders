@@ -161,22 +161,16 @@ const rows = [
       }
     })
       .then(response => {
-        console.log("data ----->" +response.data); // log the data to the console
-        setData(response.data.grades);
+        setData(JSON.stringify(response.data));
+        console.log("**** response:   " + data + "  ****");
       }).finally(() => {
         setLoading(false);
-        console.log("final data ---------->"+data);
       })
       .catch(error => console.log(error));
   }, []);
-  const mappedObjectOfObjects = Object.keys(data).map((key) => {
-    return {
-      ...data[key],
-      id: key,
-    };
-  });
-  
-  console.log(mappedObjectOfObjects);
+
+    
+
     return (
       <TableContainer>
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -214,6 +208,7 @@ const rows = [
                 </TableHead>
                 <TableBody>
                   {rows.map((grade) => (
+                    
                     <TableRow
                       // key={grade.course_name}
                       sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
