@@ -39,6 +39,28 @@ function RequestIDCard() {
         setBloodGroup(e.target.value);
     };
 
+    // function handleSubmit(e) {
+    //     e.preventDefault();
+
+    //     let formData = new FormData();
+    //     formData.append('file', this.file);
+    //     console.log('>> formData >> ', formData);
+
+    //     // You should have a server side REST API 
+    //     axios.post('http://localhost:8080/restapi/fileupload',
+    //         formData, {
+    //             headers: {
+    //             'Content-Type': 'multipart/form-data'
+    //             }
+    //         }
+    //         ).then(function () {
+    //         console.log('Successfully added data!');
+    //         })
+    //         .catch(function () {
+    //         console.log('Something went wrong, try again!');
+    //         });
+    // }
+
     return(
         <div>
             <Navbar />
@@ -140,10 +162,7 @@ function RequestIDCard() {
                                     <div style={{marginLeft: '1rem'}}>
                                         <textarea name="postalAddress" rows={6} cols={30} style={{borderColor: 'lightgray'}}/>
                                     </div>
-                                </Grid>
-
-                                
-                                    
+                                </Grid>      
 
                             </Grid>
                         </div>
