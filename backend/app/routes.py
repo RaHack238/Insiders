@@ -93,6 +93,21 @@ def viewAllStudents():
         return jsonify(message=str(e)), 500
 
 
+
+@app.route('/userDetails', methods=['GET'])
+@jwt_required()
+def userDetails():
+    try:
+        student_id=get_jwt_identity()
+        user=Student.query.filter_by(student_id=student_id).first().as_dict()
+        user.pop('login_password')
+        user.pop('department')
+        user.pop('batch')
+        return jsonify(user=user), 200
+    except Exception as e:
+        return jsonify(message=str(e)), 500
+
+
 @app.route('/icardSubmit', methods=['POST'])
 @jwt_required()
 def icardSubmit():
