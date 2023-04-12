@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, TextField, InputLabel, FormControl, Select, MenuItem, Button } from "@mui/material";
+import { Grid, TextField, InputLabel, FormControl, Select, MenuItem, Button, Box } from "@mui/material";
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -9,35 +9,14 @@ import Navbar from "../../components/navbar";
 
 function ScholarshipCard() {
     
-    const [bloodGroup, setBloodGroup] = useState('');
-
-    const bloodGroupData = [
-        {
-            'label' : 'AB Negative',
-            'value': 1
-        }, 
-        {
-            'label' : 'AB Positive',
-            'value': 2
-        },
-        {
-            'label' : 'B Negative',
-            'value': 3
-        },
-        {
-            'label' : 'B Positive',
-            'value': 4
-        },
-        {
-            'label' : 'A Negative',
-            'value': 5
-        },
-    ]
-    
-    const handleBloodGroupChange = (e) => {
-        setBloodGroup(e.target.value);
-    };
-
+    const [other, setOther] = useState("");
+    const [bpb, setBpb] = useState("");
+    const [bs, setBs] = useState("");
+    const [form16, setForm16] = useState("");
+    const [formsch01c, setFormsch01c] = useState("");
+    const [formsch01b, setFormsch01b] = useState("");
+    const [formsch01a, setFormsch01a] = useState("");
+    const [formic, setFormic] = useState("");
     return(
         <div>
             <Navbar />
@@ -165,13 +144,198 @@ function ScholarshipCard() {
                                     </div>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <div style={{marginLeft: '1rem'}}>
+                                    <div style={{marginLeft: '1rem', marginBottom: '2rem'}}>
                                         <TextField id="outlined-basic" label="Occupation" variant="outlined" />
                                     </div>
                                 </Grid>
-                                
-                                    
-
+                                <Grid item xs={6}>
+                                    <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                                        <div style={{display: 'flex', alignItems: 'center'}}>
+                                            <label htmlFor="select-other" >
+                                                <div className="upload-btn">
+                                                    Upload Other
+                                                </div>
+                                            </label>
+                                            <input
+                                                style={{ display: "none" }}
+                                                type="file"
+                                                id="select-other"
+                                                onChange={(e) => { setOther(e.target.files[0]) }} 
+                                            />
+                                        </div>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{marginLeft: '1rem'}}>
+                                        <Box 
+                                            display="flex"
+                                            justifyContent="center"
+                                            alignItems="center"
+                                            height="150px"
+                                            width="210px"
+                                            maxHeight="150px"
+                                            maxWidth="210px"
+                                            minHeight="150px"
+                                            minWidth="210px"
+                                            sx={{
+                                                border: "1px dashed grey",
+                                                overflow: "hidden",
+                                                objectFit: "contain",
+                                                borderRadius: "8px",
+                                            }}>
+                                                {other ? (
+                                                <div >
+                                                    <img src={URL.createObjectURL(other)} height="100%" width="100%" />
+                                                </div>
+                                            ) : (
+                                                <div style={{ fontSize: 12 }}>
+                                                    <p>Other Attachments If Any</p>
+                                                </div>
+                                            )}
+                                        </Box>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                                        <div style={{display: 'flex', alignItems: 'center'}}>
+                                            <label htmlFor="select-bs" >
+                                                <div className="upload-btn">
+                                                    Upload BS
+                                                </div>
+                                            </label>
+                                            <input
+                                                style={{ display: "none" }}
+                                                type="file"
+                                                id="select-bs"
+                                                onChange={(e) => { setBs(e.target.files[0]) }} 
+                                            />
+                                        </div>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{marginLeft: '1rem'}}>
+                                        <Box 
+                                            display="flex"
+                                            justifyContent="center"
+                                            alignItems="center"
+                                            height="150px"
+                                            width="210px"
+                                            maxHeight="150px"
+                                            maxWidth="210px"
+                                            minHeight="150px"
+                                            minWidth="210px"
+                                            sx={{
+                                                border: "1px dashed grey",
+                                                overflow: "hidden",
+                                                objectFit: "contain",
+                                                borderRadius: "8px",
+                                            }}>
+                                                {bs ? (
+                                                <div >
+                                                    <img src={URL.createObjectURL(bs)} height="100%" width="100%" />
+                                                </div>
+                                            ) : (
+                                                <div style={{ fontSize: 12 }}>
+                                                    <p>Bank Statement for Pensioners</p>
+                                                </div>
+                                            )}
+                                        </Box>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                                        <div style={{display: 'flex', alignItems: 'center'}}>
+                                            <label htmlFor="select-formsch01c" >
+                                                <div className="upload-btn">
+                                                    Upload Form Sch.01 (C)
+                                                </div>
+                                            </label>
+                                            <input
+                                                style={{ display: "none" }}
+                                                type="file"
+                                                id="select-formsch01c"
+                                                onChange={(e) => { setFormsch01c(e.target.files[0]) }} 
+                                            />
+                                        </div>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{marginLeft: '1rem'}}>
+                                        <Box 
+                                            display="flex"
+                                            justifyContent="center"
+                                            alignItems="center"
+                                            height="150px"
+                                            width="210px"
+                                            maxHeight="150px"
+                                            maxWidth="210px"
+                                            minHeight="150px"
+                                            minWidth="210px"
+                                            sx={{
+                                                border: "1px dashed grey",
+                                                overflow: "hidden",
+                                                objectFit: "contain",
+                                                borderRadius: "8px",
+                                            }}>
+                                                {formsch01c ? (
+                                                <div >
+                                                    <img src={URL.createObjectURL(formsch01c)} height="100%" width="100%" />
+                                                </div>
+                                            ) : (
+                                                <div style={{ fontSize: 12, textAlign: "center" }}>
+                                                    <p>Annual Income Certificate for Pensioners</p>
+                                                </div>
+                                            )}
+                                        </Box>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                                        <div style={{display: 'flex', alignItems: 'center'}}>
+                                            <label htmlFor="select-formsch01a" >
+                                                <div className="upload-btn">
+                                                    Upload Form Sch.01 (A)
+                                                </div>
+                                            </label>
+                                            <input
+                                                style={{ display: "none" }}
+                                                type="file"
+                                                id="select-formsch01a"
+                                                onChange={(e) => { setFormsch01a(e.target.files[0]) }} 
+                                            />
+                                        </div>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{marginLeft: '1rem'}}>
+                                        <Box 
+                                            display="flex"
+                                            justifyContent="center"
+                                            alignItems="center"
+                                            height="150px"
+                                            width="210px"
+                                            maxHeight="150px"
+                                            maxWidth="210px"
+                                            minHeight="150px"
+                                            minWidth="210px"
+                                            sx={{
+                                                border: "1px dashed grey",
+                                                overflow: "hidden",
+                                                objectFit: "contain",
+                                                borderRadius: "8px",
+                                            }}>
+                                                {formsch01a ? (
+                                                <div >
+                                                    <img src={URL.createObjectURL(formsch01a)} height="100%" width="100%" />
+                                                </div>
+                                            ) : (
+                                                <div style={{ fontSize: 12, textAlign: "center" }}>
+                                                    <p>Annual Salary Certificate for Salaried Class</p>
+                                                </div>
+                                            )}
+                                        </Box>
+                                    </div>
+                                </Grid>
                             </Grid>
                         </div>
                     </Grid>
@@ -223,7 +387,7 @@ function ScholarshipCard() {
                                     </div>
                                 </Grid>
                                 <Grid item xs={6}>
-                                <div style={{marginLeft: '1rem', marginBottom: '2rem'}}>
+                                <div style={{marginLeft: '1rem', marginBottom: '1.5rem'}}>
                                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                                             <DemoContainer components={['DatePicker']}>
                                                 <DatePicker label="Date" />
@@ -277,8 +441,196 @@ function ScholarshipCard() {
                                     </div>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <div style={{marginLeft: '1rem'}}>
+                                    <div style={{marginLeft: '1rem', marginBottom: '2rem'}}>
                                         <TextField id="outlined-basic" label="Income" variant="outlined" />
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                                        <div style={{display: 'flex', alignItems: 'center'}}>
+                                            <label htmlFor="select-bpb" >
+                                                <div className="upload-btn">
+                                                    Upload BPB
+                                                </div>
+                                            </label>
+                                            <input
+                                                style={{ display: "none" }}
+                                                type="file"
+                                                id="select-bpb"
+                                                onChange={(e) => { setBpb(e.target.files[0]) }} 
+                                            />
+                                        </div>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{marginLeft: '1rem'}}>
+                                        <Box 
+                                            display="flex"
+                                            justifyContent="center"
+                                            alignItems="center"
+                                            height="150px"
+                                            width="210px"
+                                            maxHeight="150px"
+                                            maxWidth="210px"
+                                            minHeight="150px"
+                                            minWidth="210px"
+                                            sx={{
+                                                border: "1px dashed grey",
+                                                overflow: "hidden",
+                                                objectFit: "contain",
+                                                borderRadius: "8px",
+                                            }}>
+                                                {bpb ? (
+                                                <div >
+                                                    <img src={URL.createObjectURL(bpb)} height="100%" width="100%" />
+                                                </div>
+                                            ) : (
+                                                <div style={{ fontSize: 12, textAlign: "center" }}>
+                                                    <p>Front page of bank passbook/internet account statement for beneficiary account details</p>
+                                                </div>
+                                            )}
+                                        </Box>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                                        <div style={{display: 'flex', alignItems: 'center'}}>
+                                            <label htmlFor="select-form16" >
+                                                <div className="upload-btn">
+                                                    Upload Form 16
+                                                </div>
+                                            </label>
+                                            <input
+                                                style={{ display: "none" }}
+                                                type="file"
+                                                id="select-form16"
+                                                onChange={(e) => { setForm16(e.target.files[0]) }} 
+                                            />
+                                        </div>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{marginLeft: '1rem'}}>
+                                        <Box 
+                                            display="flex"
+                                            justifyContent="center"
+                                            alignItems="center"
+                                            height="150px"
+                                            width="210px"
+                                            maxHeight="150px"
+                                            maxWidth="210px"
+                                            minHeight="150px"
+                                            minWidth="210px"
+                                            sx={{
+                                                border: "1px dashed grey",
+                                                overflow: "hidden",
+                                                objectFit: "contain",
+                                                borderRadius: "8px",
+                                            }}>
+                                                {form16 ? (
+                                                <div >
+                                                    <img src={URL.createObjectURL(form16)} height="100%" width="100%" />
+                                                </div>
+                                            ) : (
+                                                <div style={{ fontSize: 12 }}>
+                                                    <p>Tax certificate form 16/16A</p>
+                                                </div>
+                                            )}
+                                        </Box>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                                        <div style={{display: 'flex', alignItems: 'center'}}>
+                                            <label htmlFor="select-formsch01b" >
+                                                <div className="upload-btn">
+                                                    Upload Form Sch.01 (B)
+                                                </div>
+                                            </label>
+                                            <input
+                                                style={{ display: "none" }}
+                                                type="file"
+                                                id="select-formsch01b"
+                                                onChange={(e) => { setFormsch01b(e.target.files[0]) }} 
+                                            />
+                                        </div>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{marginLeft: '1rem'}}>
+                                        <Box 
+                                            display="flex"
+                                            justifyContent="center"
+                                            alignItems="center"
+                                            height="150px"
+                                            width="210px"
+                                            maxHeight="150px"
+                                            maxWidth="210px"
+                                            minHeight="150px"
+                                            minWidth="210px"
+                                            sx={{
+                                                border: "1px dashed grey",
+                                                overflow: "hidden",
+                                                objectFit: "contain",
+                                                borderRadius: "8px",
+                                            }}>
+                                                {formsch01b ? (
+                                                <div >
+                                                    <img src={URL.createObjectURL(formsch01b)} height="100%" width="100%" />
+                                                </div>
+                                            ) : (
+                                                <div style={{ fontSize: 12 }}>
+                                                    <p>Affidavit</p>
+                                                </div>
+                                            )}
+                                        </Box>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                                        <div style={{display: 'flex', alignItems: 'center'}}>
+                                            <label htmlFor="select-formic" >
+                                                <div className="upload-btn">
+                                                    Upload Form IC
+                                                </div>
+                                            </label>
+                                            <input
+                                                style={{ display: "none" }}
+                                                type="file"
+                                                id="select-formic"
+                                                onChange={(e) => { setFormic(e.target.files[0]) }} 
+                                            />
+                                        </div>
+                                    </div>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <div style={{marginLeft: '1rem'}}>
+                                        <Box 
+                                            display="flex"
+                                            justifyContent="center"
+                                            alignItems="center"
+                                            height="150px"
+                                            width="210px"
+                                            maxHeight="150px"
+                                            maxWidth="210px"
+                                            minHeight="150px"
+                                            minWidth="210px"
+                                            sx={{
+                                                border: "1px dashed grey",
+                                                overflow: "hidden",
+                                                objectFit: "contain",
+                                                borderRadius: "8px",
+                                            }}>
+                                                {formic ? (
+                                                <div >
+                                                    <img src={URL.createObjectURL(formic)} height="100%" width="100%" />
+                                                </div>
+                                            ) : (
+                                                <div style={{ fontSize: 12 }}>
+                                                    <p>Income Certificate from local District Authorities</p>
+                                                </div>
+                                            )}
+                                        </Box>
                                     </div>
                                 </Grid>
                             </Grid>

@@ -182,7 +182,7 @@ function RequestIDCard() {
                                             <p>Upload Signature</p>
                                         </div>
                                     )}
-                                    </Box>
+                                </Box>
                             </div>
 
                             <div style={{display: 'flex', alignItems: 'center'}}>
