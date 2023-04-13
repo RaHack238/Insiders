@@ -1,45 +1,40 @@
-.course-registration-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  .course-selection {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .selected-courses {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 20px;
-  }
-  
-  .selected-courses li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
-  
-  .selected-courses li button {
-    background-color: #f44336;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  .selected-courses li button:hover {
-    background-color: #d32f2f;
-  }
-  
-  
+.side-avatar{
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+.text-content{
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.sidebar-list{
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.major-content{
+  margin-top: 2rem;
+}
+
+.detail-cards{
+  display: flex;
+  margin-top: 2rem;
+}
+
+.primary-heading{
+  font-family: "Poppins";
+  color: "#00264d";
+  font-size: 24;
+  font-weight: 600;
+}
+
+.course-type-box{
+  margin-bottom: 2rem;
+}
+
+.course-table{
+  margin-top: 1rem;
+}

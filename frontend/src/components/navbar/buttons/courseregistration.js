@@ -14,7 +14,7 @@ export default function CourseRegistrationbutton() {
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
         console.log("handleClick called");
-        navigate("/courseRegistration");
+        navigate("/courseRegistration/relevantCourses");
     };
 
     const handleClose = () => {

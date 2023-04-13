@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Grid from "@material-ui/core/Grid";
 import { 
     Avatar, 
@@ -27,6 +27,15 @@ const ProfilePage = () => {
             'url' : '/viewprofile/studentDegree',
         },
     ];
+
+    const [isHover, setIsHover] = useState(-1);
+
+   const handleMouseEnter = (index) => {
+      setIsHover(index);
+   };
+   const handleMouseLeave = () => {
+      setIsHover(-1);
+   };
     
     return (
     <div>
@@ -65,11 +74,13 @@ const ProfilePage = () => {
                             <div className="sidebar-list">
                                 <List>
                                     <div>
-                                    {profileDetailHeadings.map((content) => (
+                                    {profileDetailHeadings.map((content,i) => (
                                         <Link to={content.url} style={{ textDecoration: 'none' }}>
                                             <ListItem key={content.title} disablePadding style={{marginBottom: '0.5rem'}} >
                                                 <ListItemButton
-                                                    // style = {{backgroundColor: content.title === selectedButton ? '#1E4E92' : '', borderRadius: '4px'}}
+                                                    onMouseLeave={handleMouseLeave}
+                                                    onMouseEnter={()=>handleMouseEnter(i)}
+                                                    style = {{backgroundColor: isHover === i ? '#a5bfd7' : '', borderRadius: '4px'}}
                                                 >
                                                     <ListItemText 
                                                         disableTypography 

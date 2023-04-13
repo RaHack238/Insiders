@@ -9,6 +9,8 @@ import ScholarshipCard from './pages/Scholarship/scholarshipCard';
 import PersonalDetails from './pages/Profile/personalDetails';
 import AddressDetails from './pages/Profile/addressDetails';
 import StudentDegreeDetails from './pages/Profile/studentDegree';
+import OtherCourses from './pages/CourseRegistration/otherCourses';
+import RelevantCourses from './pages/CourseRegistration/relevantCourses';
 
 function App() {
   return (
@@ -22,7 +24,10 @@ function App() {
               <Route path="addressDetails" element={<AddressDetails />} />
               <Route path="studentDegree" element={<StudentDegreeDetails />} />
             </Route>
-            <Route path="/courseRegistration" element={<CourseRegistration />} />
+            <Route path="/courseRegistration" element={<CourseRegistration />} >
+              <Route index path="relevantCourses" element={<RelevantCourses />} />
+              <Route path="otherCourses" element={<OtherCourses />} />
+            </Route>
             <Route path="/requestIDCard" element={<RequestIDCard />} />
             <Route path="/scholarship" element={<ScholarshipCard />} />
           </Routes>
