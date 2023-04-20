@@ -1,7 +1,7 @@
 from app import app, jwt, db
 from flask import request, jsonify
 from functools import wraps
-from app.models import Student, Teacher, Grade, Course, Classroom, ICard, ScholarshipDB
+from app.models import Student, Teacher, Grade, Course, Classroom, ICard, ScholarshipDB, CoursesOffered
 from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
 import json 
 from collections import defaultdict
@@ -92,6 +92,28 @@ def viewAllStudents():
     except Exception as e:
         return jsonify(message=str(e)), 500
 
+
+@app.route('/relevantCourese', methods=['GET'])
+@jwt_required()
+def relevantCourese():
+    try:
+        student_id=get_jwt_identity()
+        user=Student.query.filter_by(student_id=student_id).first().as_dict()
+        batch=user['batch']
+        department=user['department']
+        courses = CoursesOffered.query.filter_by(sem=batch, department=department).all()
+        return jsonify(relevantCoureses=courses), 200
+    except Exception as e:
+        return jsonify(message=str(e)), 500
+
+@app.route('/otherCourses', methods=['GET'])
+@jwt_required()
+def otherCourses():
+    try:
+        courses = CoursesOffered.query.all()
+        return jsonify(otherCourses=courses), 200
+    except Exception as e:
+        return jsonify(message=str(e)), 500
 
 
 @app.route('/userDetails', methods=['GET'])

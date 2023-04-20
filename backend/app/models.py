@@ -93,14 +93,16 @@ class Course(BaseModel,db.Model):
         )
     credits = db.Column(db.Integer)
     course_name = db.Column(db.String)
+    elective_type = db.Column(db.String)
 
-    def __init__(self, course_id, description, class_id, teacher_id, credits, course_name):
+    def __init__(self, course_id, description, class_id, teacher_id, credits, course_name, elective_type):
         self.course_id = course_id
         self.description = description
         self.class_id = class_id
         self.teacher_id = teacher_id
         self.credits = credits
         self.course_name = course_name
+        self.elective_type = elective_type
 
 
 
@@ -166,7 +168,17 @@ class ScholarshipDB(BaseModel, db.Model):
     guardianOccupation = db.Column(db.String)
     guardianIncome = db.Column(db.Integer)
 
-    def __init__(self, student_id, otherAppliedScholarships, otherAppliedScholarshipsAmount, otherAppliedScholarshipsOrganization, otherAppliedScholarshipsStartDate, otherAppliedScholarshipsEndDate, ongoingScholarships, ongoingScholarshipsAmount, ongoingScholarshipsOrganization, ongoingScholarshipsStartDate, ongoingScholarshipsEndDate, bankName, bankAccountNumber, bankIFSC, bankBranch, fatherOccupation, fatherIncome, motherOccupation, motherIncome, guardianOccupation, guardianIncome):
+    # images 
+    other = db.Column(db.LargeBinary)
+    bpb = db.Column(db.LargeBinary)
+    bs = db.Column(db.LargeBinary)
+    form16 = db.Column(db.LargeBinary)
+    formsch01c = db.Column(db.LargeBinary)
+    formsch01b = db.Column(db.LargeBinary)
+    formsch01a = db.Column(db.LargeBinary)
+    formic = db.Column(db.LargeBinary)
+
+    def __init__(self, student_id, otherAppliedScholarships, otherAppliedScholarshipsAmount, otherAppliedScholarshipsOrganization, otherAppliedScholarshipsStartDate, otherAppliedScholarshipsEndDate, ongoingScholarships, ongoingScholarshipsAmount, ongoingScholarshipsOrganization, ongoingScholarshipsStartDate, ongoingScholarshipsEndDate, bankName, bankAccountNumber, bankIFSC, bankBranch, fatherOccupation, fatherIncome, motherOccupation, motherIncome, guardianOccupation, guardianIncome, other, bpb, bs, form16, formsch01c, formsch01b, formsch01a, formic):
         self.student_id = student_id
         self.otherAppliedScholarships = otherAppliedScholarships
         self.otherAppliedScholarshipsAmount = otherAppliedScholarshipsAmount
@@ -188,3 +200,38 @@ class ScholarshipDB(BaseModel, db.Model):
         self.motherIncome = motherIncome
         self.guardianOccupation = guardianOccupation
         self.guardianIncome = guardianIncome
+        self.other = other
+        self.bpb = bpb
+        self.bs = bs
+        self.form16 = form16
+        self.formsch01c = formsch01c
+        self.formsch01b = formsch01b
+        self.formsch01a = formsch01a
+        self.formic = formic
+
+class CoursesOffered(BaseModel, db.Model):
+    __tablename__ = 'courses_offered'
+    index = db.Column(db.Integer, primary_key=True)
+    course_id = db.Column(db.String)
+
+    sem = db.Column(db.Integer)
+    credit = db.Column(db.Integer)
+    description = db.Column(db.String)
+    branch = db.Column(db.String)
+
+    elective_type = db.Column(db.String)
+
+    teacher_id = db.Column(
+        db.Integer,
+        db.ForeignKey('teacher.teacher_id')
+    )
+
+    def __init__(self, index, course_id, sem, credit, description, branch, teacher_id, elective_type):
+        self.index = index
+        self.course_id = course_id
+        self.sem = sem
+        self.credit = credit
+        self.description = description
+        self.branch = branch
+        self.teacher_id = teacher_id
+        self.elective_type = elective_type
