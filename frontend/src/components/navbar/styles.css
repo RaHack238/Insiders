@@ -21,3 +21,7 @@
     margin-inline: inherit;
     color: #00264d;
 }
+
+.navbar__end{
+    margin-left: auto;
+}
