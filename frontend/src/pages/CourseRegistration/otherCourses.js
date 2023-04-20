@@ -31,7 +31,7 @@ const OtherCourses = () => {
                         fontSize: 24,
                         fontWeight: 600,
                     }}>
-                        Program Core Theory
+                        4th Year Elective
                     </Typography>
                 </div>
 
@@ -117,7 +117,7 @@ const OtherCourses = () => {
                         fontSize: 24,
                         fontWeight: 600,
                     }}>
-                        Program Elective
+                        3rd Year Elective
                     </Typography>
                 </div>
 
@@ -203,7 +203,7 @@ const OtherCourses = () => {
                         fontSize: 24,
                         fontWeight: 600,
                     }}>
-                        Institute Elective
+                        2nd Year Elective
                     </Typography>
                 </div>
 
@@ -290,7 +290,7 @@ const OtherCourses = () => {
                         fontSize: 24,
                         fontWeight: 600,
                     }}>
-                        Open Elective
+                        1st Year Elective
                     </Typography>
                 </div>
 
